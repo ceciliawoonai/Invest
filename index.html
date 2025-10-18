@@ -3,240 +3,195 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cecilia Woon - Your Trusted Financial Advisor</title>
-  <meta name="description" content="Personalized financial advice with Cecilia Woon, backed by trust, experience, and care." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>Cecilia Woon – Trusted Wealth Advisor</title>
+  <meta name="description" content="Cecilia Woon helps you achieve your financial goals with personalized and expert wealth planning solutions." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Base & typography */
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-        Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #ffffff;
-      color: #333333;
       margin: 0;
-      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #222222;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      font-weight: 400;
     }
-
     a {
-      color: #0071bc;
+      color: #005ea5;
       text-decoration: none;
-      transition: color 0.3s ease;
     }
-
     a:hover, a:focus {
-      color: #004a7c;
       text-decoration: underline;
     }
 
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header */
     header {
-      background: #005ea5;
-      color: white;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 1em 3em;
+      align-items: center;
+      padding: 1rem 15px;
+      border-bottom: 1px solid #e6e2db;
       position: sticky;
       top: 0;
-      box-shadow: 0 4px 10px rgba(0, 94, 165, 0.7);
+      background: white;
       z-index: 1000;
     }
-
     header img {
       height: 50px;
-      border-radius: 5px;
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     }
-
+    nav {
+      font-weight: 600;
+    }
     nav ul {
+      display: flex;
+      gap: 1.8rem;
       list-style: none;
       margin: 0;
       padding: 0;
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
+      font-size: 1rem;
     }
-
     nav ul li {
       position: relative;
     }
-
-    nav > ul > li > a {
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    nav ul ul {
-      position: absolute;
-      background: white;
-      top: 100%;
-      left: 0;
-      min-width: 180px;
-      border-radius: 6px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      display: none;
-      flex-direction: column;
-      padding: 0.5rem 0;
-      z-index: 1000;
-    }
-
-    nav ul ul li a {
-      padding: 0.6rem 1.2rem;
+    nav ul li a {
       color: #005ea5;
-      font-weight: 600;
-      display: block;
-    }
-
-    nav ul ul li a:hover {
-      background-color: #f0f7ff;
-      color: #003655;
-    }
-
-    nav ul li:hover > ul,
-    nav ul li:focus-within > ul {
-      display: flex;
-    }
-
-    .hero-banner {
-      background: linear-gradient(rgba(0, 94, 165, 0.65), rgba(0, 94, 165, 0.65)),
-        url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
-      color: #ffffff;
-      text-align: center;
-      padding: 5rem 3rem 4rem;
-      font-weight: 700;
-      font-size: 3rem;
-      letter-spacing: -0.02em;
-      font-family: 'Inter', sans-serif;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      max-width: 1100px;
-      margin: 0 auto 3rem;
-      border-radius: 0 0 20px 20px;
-    }
-
-    main.content {
-      max-width: 960px;
-      margin: 0 auto 4rem;
-      padding: 0 1.5rem;
-    }
-
-    h1 {
-      font-weight: 700;
-      color: #004a7c;
-      text-align: center;
-      font-size: 2.6rem;
-      margin-bottom: 0.6rem;
-    }
-
-    p.lead {
-      font-size: 1.25rem;
-      text-align: center;
-      color: #575757;
-      margin-bottom: 2.8rem;
-    }
-
-    section.blog-posts {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-      gap: 2.5rem;
-    }
-
-    article.post-card {
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 5px 22px rgba(0, 0, 0, 0.12);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    article.post-card:hover,
-    article.post-card:focus-within {
-      transform: translateY(-8px);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
-      outline: none;
-    }
-
-    .post-image {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-top-left-radius: 14px;
-      border-top-right-radius: 14px;
-      background-color: #eaeaea;
-    }
-
-    .post-content {
-      padding: 1.5rem 1.8rem 2rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .post-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1.3;
-      color: #003655;
-      margin: 0 0 0.6rem 0;
-    }
-
-    .post-date {
-      color: #7a7a7a;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-
-    .post-excerpt {
-      font-size: 1rem;
-      color: #4f4f4f;
-      flex-grow: 1;
-      margin-bottom: 1.2rem;
-    }
-
-    .read-more {
-      color: #0071bc;
-      font-weight: 600;
-      font-size: 1rem;
-      padding-bottom: 2px;
+      padding: 0.2rem 0;
       border-bottom: 2px solid transparent;
-      align-self: flex-start;
-      transition: border-color 0.3s, color 0.3s;
+      display: inline-block;
     }
-
-    .read-more:hover,
-    .read-more:focus {
-      color: #004a7c;
-      border-color: #004a7c;
+    nav ul li a:hover,
+    nav ul li a:focus {
+      border-bottom: 2px solid #005ea5;
       outline: none;
     }
 
-    footer {
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1770&q=80') center center/cover no-repeat;
+      color: white;
+      padding: 6rem 1rem 8rem;
+      text-align: left;
+      max-width: 1140px;
+      margin: 0 auto 6rem auto;
+      border-radius: 0 0 4rem 4rem;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.6);
+      font-family: 'Playfair Display', serif;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      max-width: 720px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      font-weight: 400;
+      margin: 0 0 2rem;
+    }
+    .hero .btn-primary {
       background-color: #005ea5;
       color: white;
+      padding: 1rem 2.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .hero .btn-primary:hover,
+    .hero .btn-primary:focus {
+      background-color: #003d6b;
+      outline: none;
+      text-decoration: none;
+    }
+
+    /* Intro / Values Section */
+    .intro {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 0;
+      color: #4a4a4a;
+    }
+    .intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #2c2c2c;
+    }
+    .intro p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Services Section */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      padding: 3rem 15px;
+      max-width: 1140px;
+      margin: 0 auto 6rem auto;
+    }
+    .service-card {
+      background: #f8f8f8;
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .service-card:hover, .service-card:focus {
+      transform: translateY(-8px);
+      outline: none;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #005ea5;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #4a4a4a;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #eae9e7;
+      text-align: center;
+      padding: 2.5rem 1rem;
       font-size: 0.95rem;
-      font-weight: 600;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
+      color: #5a5a5a;
+      border-top: 1px solid #d9d8d6;
     }
-
     footer a {
-      color: #cce4f7;
-      margin: 0 1rem;
+      color: #005ea5;
       font-weight: 600;
+      margin: 0 1rem;
+      text-decoration: none;
     }
-
     footer a:hover,
     footer a:focus {
       text-decoration: underline;
@@ -247,90 +202,64 @@
 
 <body>
 
+  <!-- Header -->
   <header>
-    <a href="index.html" aria-label="Cecilia Woon Financial Advisor Home">
-      <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=80&q=80"
-        alt="Cecilia Woon logo" />
+    <a href="index.html" aria-label="Cecilia Woon Wealth Advisor Home">
+      <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=80&q=80" alt="Cecilia Woon Logo" />
     </a>
     <nav>
       <ul>
-
         <li><a href="index.html">Home</a></li>
-
-        <li>
-          <a href="#" aria-haspopup="true" aria-expanded="false">Financial Planning ▼</a>
-          <ul>
-            <li><a href="posts/home-buying.html">Home Buying</a></li>
-            <li><a href="posts/family-finance.html">Family Finance</a></li>
-            <li><a href="posts/emergency-funds.html">Emergency Funds</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="#" aria-haspopup="true" aria-expanded="false">Investments ▼</a>
-          <ul>
-            <li><a href="posts/stocks.html">Stocks</a></li>
-            <li><a href="posts/bonds.html">Bonds</a></li>
-            <li><a href="posts/mutual-funds.html">Mutual Funds</a></li>
-            <li><a href="posts/market-updates.html">Market Updates</a></li>
-          </ul>
-        </li>
-
         <li><a href="page-about/index.html">About Cecilia</a></li>
-        <li><a href="page-downloads/index.html">Resources</a></li>
-
+        <li><a href="page-services.html">Services</a></li>
+        <li><a href="page-insights.html">Insights</a></li>
+        <li><a href="page-contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero-banner">
-    Welcome to your trusted partner in smart financial decisions —<br> <strong>Cecilia Woon</strong>, here to guide you.
+  <!-- Hero Section -->
+  <section class="hero" role="region" aria-label="Welcome message">
+    <div class="container">
+      <h1>Your Partner in Thoughtful, Personal Wealth Planning</h1>
+      <p>With over 15 years helping individuals and families grow their wealth, I provide tailored solutions that fit your life goals.</p>
+      <a href="page-contact.html" class="btn-primary">Get in Touch</a>
+    </div>
   </section>
 
-  <main class="content">
-    <h1>Insights & Advice Tailored for You</h1>
-    <p class="lead">Monthly guidance from Cecilia Woon, seasoned financial advisor helping you protect and grow what matters most.</p>
+  <!-- Introduction -->
+  <section class="intro" role="region" aria-label="About Cecilia Woon">
+    <h2>Meet Cecilia Woon</h2>
+    <p>
+      Cecilia is a seasoned financial advisor known for her client-first approach and deep expertise. She works closely with you to
+      navigate complex financial decisions with clarity and confidence.
+    </p>
+  </section>
 
-    <section class="blog-posts">
+  <!-- Services -->
+  <section class="services" role="region" aria-label="Wealth planning services by Cecilia Woon">
+    <div class="service-card" tabindex="0" onclick="location.href='page-services.html#planning'">
+      <h3>Comprehensive Financial Plans</h3>
+      <p>Customized strategies designed to align with your unique financial goals and life milestones.</p>
+    </div>
+    <div class="service-card" tabindex="0" onclick="location.href='page-services.html#investment'">
+      <h3>Investment Management</h3>
+      <p>Expert guidance to build, diversify, and optimize your investment portfolio for long-term success.</p>
+    </div>
+    <div class="service-card" tabindex="0" onclick="location.href='page-services.html#retirement'">
+      <h3>Retirement Planning</h3>
+      <p>Planning for a secure and comfortable retirement tailored to your lifestyle aspirations.</p>
+    </div>
+  </section>
 
-      <article class="post-card" tabindex="0" onclick="location.href='posts/investment-strategies.html'">
-        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80" alt="Investment Strategies" class="post-image" />
-        <div class="post-content">
-          <h2 class="post-title">Top Investment Strategies for 2025</h2>
-          <div class="post-date">October 1, 2025</div>
-          <p class="post-excerpt">Explore smart investment strategies to grow your portfolio confidently in today’s market.</p>
-          <a href="posts/investment-strategies.html" class="read-more">Read more &raquo;</a>
-        </div>
-      </article>
-
-      <article class="post-card" tabindex="0" onclick="location.href='posts/budgeting-tips.html'">
-        <img src="https://images.unsplash.com/photo-1565372916486-3fbd208d4e3c?auto=format&fit=crop&w=800&q=80" alt="Budgeting Tips" class="post-image" />
-        <div class="post-content">
-          <h2 class="post-title">Effective Budgeting Tips You Can Use</h2>
-          <div class="post-date">September 1, 2025</div>
-          <p class="post-excerpt">Simple and actionable budgeting methods to help you save without sacrifice.</p>
-          <a href="posts/budgeting-tips.html" class="read-more">Read more &raquo;</a>
-        </div>
-      </article>
-
-      <article class="post-card" tabindex="0" onclick="location.href='posts/retirement-planning.html'">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Retirement Planning" class="post-image" />
-        <div class="post-content">
-          <h2 class="post-title">Retirement Planning: How to Start Now</h2>
-          <div class="post-date">August 1, 2025</div>
-          <p class="post-excerpt">Your friendly guide to building a secure and comfortable retirement path.</p>
-          <a href="posts/retirement-planning.html" class="read-more">Read more &raquo;</a>
-        </div>
-      </article>
-
-    </section>
-  </main>
-
+  <!-- Footer -->
   <footer>
     <a href="index.html">Home</a> |
     <a href="page-about/index.html">About Cecilia</a> |
-    <a href="page-downloads/index.html">Resources</a>
-    <p>© 2025 Cecilia Woon, Financial Advisor. All rights reserved.</p>
+    <a href="page-services.html">Services</a> |
+    <a href="page-insights.html">Insights</a> |
+    <a href="page-contact.html">Contact</a>
+    <p>© 2025 Cecilia Woon Wealth Advisor. All rights reserved.</p>
   </footer>
 
 </body>
