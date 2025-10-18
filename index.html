@@ -7,11 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Finance Advisor Live Blog</title>
   <meta name="description" content="Insights and live updates from a professional finance advisor to empower your financial success." />
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
   <style>
-    /* Reset & Base */
+    /* Base and font */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
         Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -51,14 +49,58 @@
       cursor: pointer;
     }
 
-    nav a {
-      margin-left: 2rem;
-      font-weight: 600;
-      font-size: 1rem;
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
     }
 
-    nav a:first-child {
-      margin-left: 0;
+    nav ul li {
+      position: relative;
+    }
+
+    nav > ul > li > a {
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    nav ul ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+      flex-direction: column;
+      min-width: 180px;
+      border-radius: 6px;
+      padding: 0.5rem 0;
+      z-index: 1000;
+    }
+
+    nav ul ul li {
+      padding: 0;
+    }
+
+    nav ul ul li a {
+      padding: 0.6rem 1.2rem;
+      color: #0a3055;
+      font-weight: 500;
+      display: block;
+    }
+
+    nav ul ul li a:hover {
+      background-color: #f0f5ff;
+      color: #065fd4;
+    }
+
+    nav ul li:hover > ul {
+      display: flex;
     }
 
     .hero-banner {
@@ -70,7 +112,6 @@
       font-weight: 700;
       font-size: 2.8rem;
       letter-spacing: -0.015em;
-      font-family: 'Inter', sans-serif;
     }
 
     main.content {
@@ -101,7 +142,7 @@
     article.post-card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 6px 25px rgb(10 48 85 / 0.1);
+      box-shadow: 0 6px 25px rgba(10, 48, 85, 0.1);
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -111,7 +152,7 @@
 
     article.post-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgb(10 48 85 / 0.15);
+      box-shadow: 0 12px 35px rgba(10, 48, 85, 0.15);
     }
 
     .post-image {
@@ -188,11 +229,36 @@
       <img src="images/demo-logo.png" alt="Finance Advisor Logo" />
     </a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="page-about/index.html">About</a>
-      <a href="page-downloads/index.html">Downloads</a>
+      <ul>
+
+        <li><a href="index.html">Home</a></li>
+
+        <li>
+          <a href="#" aria-haspopup="true" aria-expanded="false">Financial Planning ▼</a>
+          <ul>
+            <li><a href="posts/home-buying.html">Home Buying</a></li>
+            <li><a href="posts/family-finance.html">Family Finance</a></li>
+            <li><a href="posts/emergency-funds.html">Emergency Funds</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" aria-haspopup="true" aria-expanded="false">Investments ▼</a>
+          <ul>
+            <li><a href="posts/stocks.html">Stocks</a></li>
+            <li><a href="posts/bonds.html">Bonds</a></li>
+            <li><a href="posts/mutual-funds.html">Mutual Funds</a></li>
+            <li><a href="posts/market-updates.html">Market Updates</a></li>
+          </ul>
+        </li>
+
+        <li><a href="page-about/index.html">About</a></li>
+        <li><a href="page-downloads/index.html">Downloads</a></li>
+
+      </ul>
     </nav>
   </header>
+
 
   <section class="hero-banner">
     Insights and live updates to empower your financial success
@@ -243,7 +309,6 @@
     <a href="page-downloads/index.html">Downloads</a>
     <p>© 2025 Finance Advisor. All rights reserved.</p>
   </footer>
-
 
 </body>
 
