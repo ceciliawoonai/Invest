@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cecilia Woon – Trusted Wealth Advisor</title>
+  <meta name="description" content="Cecilia Woon helps Singapore families close protection gaps with personalized financial planning solutions." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #222222;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    a { color: #005ea5; text-decoration: none; }
+    a:hover, a:focus { text-decoration: underline; }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 15px;
+      border-bottom: 1px solid #e6e2db;
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 1000;
+    }
+    header img { height: 50px; cursor: pointer; }
+    nav { font-weight: 600; }
+    nav ul {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+    }
+    nav ul li a {
+      color: #005ea5;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+    }
+    nav ul li a:hover, nav ul li a:focus {
+      border-bottom: 2px solid #005ea5;
+      outline: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(30,60,114,0.9), rgba(42,82,152,0.9)), 
+                  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1770&q=80') center center/cover no-repeat;
+      color: white;
+      padding: 6rem 1rem 8rem;
+      text-align: left;
+      max-width: 1140px;
+      margin: 0 auto 6rem auto;
+      border-radius: 0 0 4rem 4rem;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.6);
+      font-family: 'Playfair Display', serif;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      max-width: 720px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      font-weight: 400;
+      margin: 0 0 2rem;
+    }
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+      padding: 1rem 2.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .whatsapp-btn:hover, .whatsapp-btn:focus {
+      background-color: #128C7E;
+      transform: scale(1.05);
+      outline: none;
+      text-decoration: none;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      padding: 3rem 0;
+      color: #4a4a4a;
+    }
+    .intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #2c2c2c;
+    }
+    .intro p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Success Stories */
+    .success-stories {
+      padding: 3rem 15px;
+      max-width: 1140px;
+      margin: 0 auto 6rem auto;
+    }
+    .success-stories h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #1e3c72;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+    }
+    .story-card {
+      background: #f8f8f8;
+      border-radius: 14px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      border-left: 5px solid #25D366;
+      transition: transform 0.3s ease;
+    }
+    .story-card:hover { transform: translateY(-8px); }
+    .story-icon { font-size: 2.5rem; color: #25D366; margin-bottom: 1rem; text-align: center; }
+    .story-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: #1e3c72;
+    }
+    .story-card p {
+      font-size: 0.95rem;
+      color: #4a4a4a;
+      line-height: 1.6;
+    }
+
+    /* Protection Gaps */
+    .protection-gaps {
+      padding: 3rem 15px;
+      max-width: 1140px;
+      margin: 0 auto 6rem auto;
+    }
+    .protection-gaps h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #1e3c72;
+    }
+    .gaps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    .gap-card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border-left: 5px solid #ff6b6b;
+      transition: transform 0.3s ease;
+    }
+    .gap-card:hover { transform: translateY(-8px); }
+    .gap-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #1e3c72;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #eae9e7;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 0.95rem;
+      color: #5a5a5a;
+      border-top: 1px solid #d9d8d6;
+    }
+    footer a { color: #005ea5; font-weight: 600; margin: 0 1rem; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      nav ul { gap: 1rem; font-size: 0.9rem; }
+      .stories-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <a href="#home" aria-label="Cecilia Woon Wealth Advisor Home">
+      <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=80&q=80" alt="Cecilia Woon Logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#stories">Success Stories</a></li>
+        <li><a href="#protection">Protection</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home" role="region" aria-label="Welcome message">
+    <div class="container">
+      <h1>Closing Singapore's S$1M+ Family Protection Gaps</h1>
+      <p>9 in 10 families have critical coverage shortfalls. Average life coverage S$331K vs real needs S$1M+. Get your portfolio reviewed today.</p>
+      <a href="https://wa.me/6581234567?text=Hi,%20I'd%20like%20a%20Financial%20Portfolio%20Review" 
+         class="whatsapp-btn" target="_blank">
+         📱 Book Portfolio Review Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="intro" role="region" aria-label="Our approach">
+    <h2>Client-First Financial Planning</h2>
+    <p>
+      We believe <span class="highlight">everyone deserves to be heard</span>. Our client-first approach helps families 
+      discover hidden protection gaps and build plans that evolve with their life journey.
+    </p>
+  </section>
+
+  <!-- Success Stories (15 key scenarios shown) -->
+  <section class="success-stories" id="stories">
+    <div class="container">
+      <h2>📖 50+ Real Family Scenarios Resolved</h2>
+      <div class="stories-grid">
+        <div class="story-card">
+          <div class="story-icon">👨‍👩‍👧‍👦</div>
+          <h3>New Parents Gap</h3>
+          <p>S$800K mortgage uncovered beyond MediShield. PRUShield + CI riders added.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🏠</div>
+          <h3>HDB-to-Condo Upgrade</h3>
+          <p>10yr policies covered 30% new loan. Full debt protection restructured.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">👵</div>
+          <h3>Sandwich Generation</h3>
+          <p>No coverage for kids + parents. Dual protection plans implemented.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">💼</div>
+          <h3>Tech Professional</h3>
+          <p>Stock-focused missed family protection. Critical gaps filled instantly.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🏥</div>
+          <h3>Cancer Payout</h3>
+          <p>S$250K CI + S$3K daily cash during treatment. Riders proved invaluable.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🎓</div>
+          <h3>Uni Fees Secured</h3>
+          <p>Education ILP locked 4% guaranteed. S$500K ready by enrolment.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🛡️</div>
+          <h3>A1 Ward Coverage</h3>
+          <p>Upgraded from C ward. Choose doctors/hospitals without stress.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">💰</div>
+          <h3>CPF Top-Up</h3>
+          <p>S$8K annual yielding 4-5%. Extra S$200K by retirement.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">👨‍⚕️</div>
+          <h3>Healthcare Worker</h3>
+          <p>Employer coverage lapsed post-job change. Personal plan activated.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🚀</div>
+          <h3>Startup Founder</h3>
+          <p>Keyman + family protection before Series A funding.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">👨‍💼</div>
+          <h3>SME Owner</h3>
+          <p>Business + family secured via buy-sell insurance agreement.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🛵</div>
+          <h3>Delivery Rider</h3>
+          <p>Accident + hospitalisation for daily occupational risks.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">💻</div>
+          <h3>Freelancer</h3>
+          <p>Income protection during contract dry months + family coverage.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🏦</div>
+          <h3>FD to ILP Shift</h3>
+          <p>Low-yield FDs → 4.2% guaranteed + bonuses.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🩺</div>
+          <h3>Dengue ICU</h3>
+          <p>S$15K bill covered despite pre-existing mild asthma.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 3rem; font-style: italic; color: #666; font-size: 0.95rem;">
+        <p>*50+ real scenarios from Singapore families (PDPA anonymised)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Protection Gaps -->
+  <section class="protection-gaps" id="protection">
+    <div class="container">
+      <h2>🔍 Why 9 in 10 Families Are Underinsured</h2>
+      <div class="gaps-grid">
+        <div class="gap-card">
+          <h3>💰 Low Sum Assured</h3>
+          <p>Avg S$331K life vs S$1M+ family needs</p>
+        </div>
+        <div class="gap-card">
+          <h3>💸 Affordability Myth</h3>
+          <p>47% skip coverage thinking "too expensive"</p>
+        </div>
+        <div class="gap-card">
+          <h3>🏥 MediShield Limits</h3>
+          <p>No private care, new treatments, riders</p>
+        </div>
+        <div class="gap-card">
+          <h3>👨‍👩‍👧 Life Stage Gaps</h3>
+          <p>Policies don't evolve with family changes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="credentials" id="contact" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 4rem 1rem; text-align: center; margin: 6rem auto 0; border-radius: 20px 20px 0 0; max-width: 1140px;">
+    <div class="container">
+      <h2 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2rem; margin-bottom: 2rem;">Ready for Your Review?</h2>
+      <a href="https://wa.me/6581234567?text=Hi,%20Portfolio%20Review" class="whatsapp-btn" target="_blank" style="padding: 1.2rem 3rem; font-size: 1.2rem;">
+        📱 WhatsApp Portfolio Review
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#home">Home</a> |
+    <a href="#stories">Success Stories</a> |
+    <a href="#protection">Protection</a> |
+    <a href="#contact">Contact</a>
+    <p>Representing Prudential Assurance Company Singapore<br>Licensed Financial Consultant | © 2026 All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
