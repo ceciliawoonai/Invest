@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,8 +127,9 @@
       margin: 0 auto;
       line-height: 1.7;
     }
+    .highlight { font-weight: 600; color: #005ea5; }
 
-    /* Success Stories */
+    /* DYNAMIC Stories Section */
     .success-stories {
       padding: 3rem 15px;
       max-width: 1140px;
@@ -206,13 +208,30 @@
       color: #1e3c72;
     }
 
+    /* Contact CTA */
+    .contact-cta {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+      margin: 6rem auto 0;
+      border-radius: 20px 20px 0 0;
+      max-width: 1140px;
+    }
+    .contact-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
     /* Footer */
     footer {
       background-color: #eae9e7;
       text-align: center;
       padding: 2.5rem 1rem;
       font-size: 0.95rem;
-      color: #5a5a5a;
+      color: #5a5a4a;
       border-top: 1px solid #d9d8d6;
     }
     footer a { color: #005ea5; font-weight: 600; margin: 0 1rem; }
@@ -234,7 +253,7 @@
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#stories">Success Stories</a></li>
+        <li><a href="#stories">Stories</a></li>
         <li><a href="#protection">Protection</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -242,7 +261,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero" id="home" role="region" aria-label="Welcome message">
+  <section class="hero" id="home">
     <div class="container">
       <h1>Closing Singapore's S$1M+ Family Protection Gaps</h1>
       <p>9 in 10 families have critical coverage shortfalls. Average life coverage S$331K vs real needs S$1M+. Get your portfolio reviewed today.</p>
@@ -254,93 +273,24 @@
   </section>
 
   <!-- Philosophy -->
-  <section class="intro" role="region" aria-label="Our approach">
-    <h2>Client-First Financial Planning</h2>
-    <p>
-      We believe <span class="highlight">everyone deserves to be heard</span>. Our client-first approach helps families 
-      discover hidden protection gaps and build plans that evolve with their life journey.
-    </p>
+  <section class="intro">
+    <div class="container">
+      <h2>Client-First Financial Planning</h2>
+      <p>
+        We believe <span class="highlight">everyone deserves to be heard</span>. Our client-first approach helps families 
+        discover hidden protection gaps and build plans that evolve with their life journey.
+      </p>
+    </div>
   </section>
 
-  <!-- Success Stories (15 key scenarios shown) -->
+  <!-- DYNAMIC SUCCESS STORIES -->
   <section class="success-stories" id="stories">
     <div class="container">
       <h2>📖 50+ Real Family Scenarios Resolved</h2>
-      <div class="stories-grid">
-        <div class="story-card">
-          <div class="story-icon">👨‍👩‍👧‍👦</div>
-          <h3>New Parents Gap</h3>
-          <p>S$800K mortgage uncovered beyond MediShield. PRUShield + CI riders added.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🏠</div>
-          <h3>HDB-to-Condo Upgrade</h3>
-          <p>10yr policies covered 30% new loan. Full debt protection restructured.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">👵</div>
-          <h3>Sandwich Generation</h3>
-          <p>No coverage for kids + parents. Dual protection plans implemented.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">💼</div>
-          <h3>Tech Professional</h3>
-          <p>Stock-focused missed family protection. Critical gaps filled instantly.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🏥</div>
-          <h3>Cancer Payout</h3>
-          <p>S$250K CI + S$3K daily cash during treatment. Riders proved invaluable.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🎓</div>
-          <h3>Uni Fees Secured</h3>
-          <p>Education ILP locked 4% guaranteed. S$500K ready by enrolment.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🛡️</div>
-          <h3>A1 Ward Coverage</h3>
-          <p>Upgraded from C ward. Choose doctors/hospitals without stress.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">💰</div>
-          <h3>CPF Top-Up</h3>
-          <p>S$8K annual yielding 4-5%. Extra S$200K by retirement.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">👨‍⚕️</div>
-          <h3>Healthcare Worker</h3>
-          <p>Employer coverage lapsed post-job change. Personal plan activated.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🚀</div>
-          <h3>Startup Founder</h3>
-          <p>Keyman + family protection before Series A funding.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">👨‍💼</div>
-          <h3>SME Owner</h3>
-          <p>Business + family secured via buy-sell insurance agreement.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🛵</div>
-          <h3>Delivery Rider</h3>
-          <p>Accident + hospitalisation for daily occupational risks.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">💻</div>
-          <h3>Freelancer</h3>
-          <p>Income protection during contract dry months + family coverage.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🏦</div>
-          <h3>FD to ILP Shift</h3>
-          <p>Low-yield FDs → 4.2% guaranteed + bonuses.</p>
-        </div>
-        <div class="story-card">
-          <div class="story-icon">🩺</div>
-          <h3>Dengue ICU</h3>
-          <p>S$15K bill covered despite pre-existing mild asthma.</p>
+      <div id="stories-grid" class="stories-grid">
+        <!-- Stories will load here automatically from stories.json -->
+        <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;">
+          <p>🔄 Loading real client scenarios... (Check stories.json file)</p>
         </div>
       </div>
       <div style="text-align: center; margin-top: 3rem; font-style: italic; color: #666; font-size: 0.95rem;">
@@ -375,9 +325,9 @@
   </section>
 
   <!-- Contact CTA -->
-  <section class="credentials" id="contact" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 4rem 1rem; text-align: center; margin: 6rem auto 0; border-radius: 20px 20px 0 0; max-width: 1140px;">
+  <section class="contact-cta" id="contact">
     <div class="container">
-      <h2 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2rem; margin-bottom: 2rem;">Ready for Your Review?</h2>
+      <h2>Ready for Your Review?</h2>
       <a href="https://wa.me/6581234567?text=Hi,%20Portfolio%20Review" class="whatsapp-btn" target="_blank" style="padding: 1.2rem 3rem; font-size: 1.2rem;">
         📱 WhatsApp Portfolio Review
       </a>
@@ -387,11 +337,50 @@
   <!-- Footer -->
   <footer>
     <a href="#home">Home</a> |
-    <a href="#stories">Success Stories</a> |
+    <a href="#stories">Stories</a> |
     <a href="#protection">Protection</a> |
     <a href="#contact">Contact</a>
     <p>Representing Prudential Assurance Company Singapore<br>Licensed Financial Consultant | © 2026 All rights reserved.</p>
   </footer>
 
+  <!-- DYNAMIC STORIES SCRIPT -->
+  <script>
+    // Load stories from stories.json (create this file separately)
+    fetch('stories.json')
+      .then(response => {
+        if (!response.ok) throw new Error('stories.json not found');
+        return response.json();
+      })
+      .then(data => {
+        const grid = document.getElementById('stories-grid');
+        let html = '';
+        
+        // Loop through all categories and show top 5 stories each
+        Object.keys(data).forEach(category => {
+          if (data[category] && data[category].length > 0) {
+            data[category].slice(0, 5).forEach(story => {
+              html += `
+                <div class="story-card">
+                  <div class="story-icon">${story.icon}</div>
+                  <h3>${story.title}</h3>
+                  <p>${story.desc}</p>
+                </div>
+              `;
+            });
+          }
+        });
+        
+        grid.innerHTML = html || '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;">No stories found in stories.json</div>';
+      })
+      .catch(error => {
+        console.log('Stories file not found, using fallback');
+        document.getElementById('stories-grid').innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;">
+            <p>📝 Add <code>stories.json</code> file to enable 50+ dynamic stories</p>
+            <p><small>Upload JSON → Auto-generates stories grid instantly!</small></p>
+          </div>
+        `;
+      });
+  </script>
 </body>
 </html>
