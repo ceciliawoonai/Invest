@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salt&Light — Faith at Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      line-height: 1.6; 
+      color: #2d3748; 
+      background: #fafbfc;
+    }
+    
+    /* Header */
+    .header {
+      background: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e53e3e;
+      text-decoration: none;
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-menu a {
+      color: #4a5568;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: #e53e3e; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+
+    /* Featured Stories */
+    .featured {
+      padding: 4rem 0;
+      background: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #2d3748;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .story-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .story-image {
+      height: 200px;
+      background: linear-gradient(45deg, #e53e3e, #f56565);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+    .story-content {
+      padding: 1.5rem;
+    }
+    .story-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+    .story-meta {
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .story-excerpt {
+      color: #4a5568;
+      line-height: 1.7;
+    }
+
+    /* SOTC Section */
+    .sotc {
+      background: #f7fafc;
+      padding: 4rem 0;
+    }
+    .sotc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .sotc-content h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #2d3748;
+    }
+    .sotc-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #e53e3e;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, #2d3748, #4a5568);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .newsletter form {
+      max-width: 500px;
+      margin: 2rem auto;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .newsletter input {
+      padding: 1rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      flex: 1;
+      min-width: 250px;
+    }
+    .newsletter button {
+      padding: 1rem 2rem;
+      background: #e53e3e;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .newsletter button:hover { background: #c53030; }
+
+    /* Footer */
+    .footer {
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 3rem 0 1rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .footer a {
+      color: #e2e8f0;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer a:hover { color: #e53e3e; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .sotc-grid { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#" class="logo">Salt&Light</a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#sotc">SOTC</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Faith at Work</h1>
+      <p class="hero-subtitle">Most of us spend more than half our waking hours at work. Salt&Light is where Christians unite to see God in the 9-to-5.</p>
+    </div>
+  </section>
+
+  <!-- Featured Stories -->
+  <section class="featured">
+    <div class="container">
+      <h2 class="section-title">Latest Stories</h2>
+      <div class="stories-grid">
+        <article class="story-card">
+          <div class="story-image">🔥</div>
+          <div class="story-content">
+            <div class="story-meta">News • 3 hours ago</div>
+            <h3 class="story-title">"The last one-third of life is the finest hour"</h3>
+            <p class="story-excerpt">The Church must help people believe making their final one-third their finest hour is possible and worth pursuing.</p>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-image">📊</div>
+          <div class="story-content">
+            <div class="story-meta">SOTC 2024 • Jan 12</div>
+            <h3 class="story-title">State of the Church 2024: The Church and Seniors</h3>
+            <p class="story-excerpt">35 churches surveyed reveal growth among seniors outpaces losses from passing on.</p>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-image">🙏</div>
+          <div class="story-content">
+            <div class="story-meta">Devotional • Jan 5</div>
+            <h3 class="story-title">2025: The Year of the Uncomfortable Church</h3>
+            <p class="story-excerpt">Will Singapore Church come out of comfort zones to fulfil the Great Commission?</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOTC Section -->
+  <section class="sotc" id="sotc">
+    <div class="container">
+      <div class="sotc-grid">
+        <div class="sotc-content">
+          <h3>State of the Church in Singapore 2024</h3>
+          <p>Super-aged society by 2026. How is the Church responding? 35 churches, 57,686 attendees surveyed.</p>
+          <div class="sotc-stats">
+            <div class="stat-item">
+              <div class="stat-number">1,967</div>
+              <div>New senior attendees</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">548</div>
+              <div>Senior baptisms</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">66%</div>
+              <div>Churches growing</div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <i class="fas fa-chart-line" style="font-size: 4rem; color: #e53e3e; margin-bottom: 1rem;"></i>
+            <h4>Read Full Report</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay Updated</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem; opacity: 0.9;">Get our best stories in your inbox every week</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <h4>Salt&Light</h4>
+          <p>Helping Christians find meaning in the 9-to-5</p>
+        </div>
+        <div>
+          <h4>Sections</h4>
+          <a href="#">News</a>
+          <a href="#">Faith</a>
+          <a href="#">SOTC</a>
+          <a href="#">Devotionals</a>
+        </div>
+        <div>
+          <h4>About</h4>
+          <a href="#">Contact</a>
+          <a href="#">Team</a>
+          <a href="#">Support Us</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#">[email protected]</a>
+        </div>
+      </div>
+      <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #4a5568; color: #a0aec0;">
+        <p>&copy; 2026 Salt&Light. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
