@@ -51,6 +51,109 @@
     }
     .nav-menu a:hover { color: #e53e3e; }
 
+    /* Financial Headers - Row 1 */
+    .financial-headers-1 {
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .financial-nav-1 {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      text-align: center;
+    }
+
+    /* NEW: Health/Life/Wealth/Legacy - Row 2 */
+    .financial-headers-2 {
+      background: white;
+      padding: 1.5rem 0;
+      border-bottom: 2px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .financial-nav-2 {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    
+    .financial-nav a {
+      display: block;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+      border-radius: 12px;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .financial-nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+    .financial-nav a:hover::before { left: 100%; }
+    .financial-nav a:hover {
+      background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(229,62,62,0.4);
+      border-color: rgba(229,62,62,0.3);
+    }
+    .financial-nav i {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+
+    /* Content Headers - Row 3 */
+    .content-headers {
+      background: #f8f9fa;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .content-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .content-nav a {
+      color: #4a5568;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .content-nav a:hover {
+      background: #e53e3e;
+      color: white;
+      transform: translateY(-1px);
+    }
+
     /* Hero */
     .hero {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -138,42 +241,6 @@
       line-height: 1.7;
     }
 
-    /* SOTC Section */
-    .sotc {
-      background: #f7fafc;
-      padding: 4rem 0;
-    }
-    .sotc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .sotc-content h3 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #2d3748;
-    }
-    .sotc-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .stat-item {
-      text-align: center;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #e53e3e;
-    }
-
     /* Newsletter */
     .newsletter {
       background: linear-gradient(135deg, #2d3748, #4a5568);
@@ -240,8 +307,12 @@
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
-      .sotc-grid { grid-template-columns: 1fr; }
-      .nav-menu { display: none; }
+      .nav-menu, .content-nav { display: none; }
+      .financial-nav-1, .financial-nav-2 { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.8rem; 
+      }
+      .financial-nav a { padding: 0.8rem 1rem; font-size: 1rem; }
     }
   </style>
 </head>
@@ -255,10 +326,42 @@
         <li><a href="#stories">Stories</a></li>
         <li><a href="#sotc">SOTC</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#events">Events</a></li>
       </ul>
     </div>
   </header>
+
+  <!-- Financial Headers - Row 1: Original 4 -->
+  <section class="financial-headers-1">
+    <div class="financial-nav-1 financial-nav">
+      <a href="#"><i class="fas fa-gift"></i>Endowment Plan</a>
+      <a href="#"><i class="fas fa-calendar-alt"></i>Retirement Planning</a>
+      <a href="#"><i class="fas fa-globe"></i>Migration & Global Insurance</a>
+      <a href="#"><i class="fas fa-file-invoice-dollar"></i>Claims</a>
+    </div>
+  </section>
+
+  <!-- NEW: Health/Life/Wealth/Legacy - Row 2 -->
+  <section class="financial-headers-2">
+    <div class="financial-nav-2 financial-nav">
+      <a href="#"><i class="fas fa-heartbeat"></i>Health Protection</a>
+      <a href="#"><i class="fas fa-shield-alt"></i>Life Protection</a>
+      <a href="#"><i class="fas fa-chart-line"></i>Wealth Accumulation</a>
+      <a href="#"><i class="fas fa-users"></i>Legacy Planning</a>
+    </div>
+  </section>
+
+  <!-- Content Headers - Row 3: Salt&Light Categories -->
+  <section class="content-headers">
+    <div class="content-nav">
+      <a href="https://saltandlight.sg/leadership/">Leadership</a>
+      <a href="https://saltandlight.sg/service/">Service</a>
+      <a href="https://saltandlight.sg/family/">Family</a>
+      <a href="https://saltandlight.sg/work/">Work</a>
+      <a href="https://saltandlight.sg/profiles/">Profiles</a>
+      <a href="https://saltandlight.sg/?post_type=videos">Videos</a>
+      <a href="https://thirst.sg/donate/">Donate</a>
+    </div>
+  </section>
 
   <!-- Hero -->
   <section class="hero" id="home">
@@ -301,38 +404,6 @@
     </div>
   </section>
 
-  <!-- SOTC Section -->
-  <section class="sotc" id="sotc">
-    <div class="container">
-      <div class="sotc-grid">
-        <div class="sotc-content">
-          <h3>State of the Church in Singapore 2024</h3>
-          <p>Super-aged society by 2026. How is the Church responding? 35 churches, 57,686 attendees surveyed.</p>
-          <div class="sotc-stats">
-            <div class="stat-item">
-              <div class="stat-number">1,967</div>
-              <div>New senior attendees</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">548</div>
-              <div>Senior baptisms</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">66%</div>
-              <div>Churches growing</div>
-            </div>
-          </div>
-        </div>
-        <div style="text-align: center;">
-          <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <i class="fas fa-chart-line" style="font-size: 4rem; color: #e53e3e; margin-bottom: 1rem;"></i>
-            <h4>Read Full Report</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Newsletter -->
   <section class="newsletter">
     <div class="container">
@@ -354,17 +425,11 @@
           <p>Helping Christians find meaning in the 9-to-5</p>
         </div>
         <div>
-          <h4>Sections</h4>
-          <a href="#">News</a>
-          <a href="#">Faith</a>
-          <a href="#">SOTC</a>
-          <a href="#">Devotionals</a>
-        </div>
-        <div>
-          <h4>About</h4>
-          <a href="#">Contact</a>
-          <a href="#">Team</a>
-          <a href="#">Support Us</a>
+          <h4>Financial Planning</h4>
+          <a href="#">Health Protection</a>
+          <a href="#">Life Protection</a>
+          <a href="#">Wealth Accumulation</a>
+          <a href="#">Legacy Planning</a>
         </div>
         <div>
           <h4>Connect</h4>
@@ -380,3 +445,4 @@
   </footer>
 </body>
 </html>
+
