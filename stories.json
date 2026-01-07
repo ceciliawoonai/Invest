@@ -1,0 +1,14 @@
+{
+  "families": [
+    {"icon": "👨‍👩‍👧‍👦", "title": "New Parents Gap", "desc": "S$800K mortgage uncovered beyond MediShield. PRUShield + CI riders added."},
+    {"icon": "🏠", "title": "HDB-to-Condo Upgrade", "desc": "10yr policies covered 30% new loan. Full debt protection restructured."},
+    {"icon": "👵", "title": "Sandwich Generation", "desc": "No coverage for kids + parents. Dual protection plans implemented."}
+  ],
+  "claims": [
+    {"icon": "🏥", "title": "Cancer Payout", "desc": "S$250K CI + S$3K daily cash during treatment. Riders proved invaluable."},
+    {"icon": "🩺", "title": "Dengue ICU", "desc": "S$15K bill covered despite pre-existing mild asthma."}
+  ],
+  "retirement": [
+    {"icon": "💰", "title": "CPF Top-Up", "desc": "S$8K annual yielding 4-5%. Extra S$200K by retirement."}
+  ]
+}
