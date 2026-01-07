@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salt&Light — Faith at Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      line-height: 1.6; 
+      color: #2d3748; 
+      background: #fafbfc;
+    }
+    
+    /* Header */
+    .header {
+      background: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e53e3e;
+      text-decoration: none;
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-menu a {
+      color: #4a5568;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: #e53e3e; }
+
+    /* NEW: Curated "Must-Know" Navigation for Insurance Curious */
+    .curiosity-nav {
+      background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+      padding: 2rem 0;
+      border-bottom: 3px solid #fed7d7;
+      position: relative;
+    }
+    .curiosity-nav::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #e53e3e, #f56565, #e53e3e);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .curiosity-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Category 1: URGENT (Red Alert) */
+    .urgent-category {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .urgent-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(229,62,62,0.15);
+      border-top: 4px solid #e53e3e;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .urgent-card::before {
+      content: '🚨 URGENT';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #e53e3e;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .urgent-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(229,62,62,0.25);
+    }
+    
+    /* Category 2: NEW ARRIVALS (Green Welcome) */
+    .newcomer-category {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .newcomer-card {
+      background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(34,197,94,0.15);
+      border-top: 4px solid #10b981;
+      transition: all 0.3s ease;
+    }
+    .newcomer-card::before {
+      content: '🌏 NEW MIGRANT';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #10b981;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .newcomer-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(34,197,94,0.25);
+    }
+    
+    .nav-card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      opacity: 0.9;
+    }
+    .nav-card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: #1a202c;
+      text-align: center;
+    }
+    .nav-card-subtitle {
+      color: #4a5568;
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .nav-card-cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .nav-card-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(229,62,62,0.4);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .nav-menu { display: none; }
+      .urgent-category, .newcomer-category { 
+        grid-template-columns: 1fr; 
+        gap: 1rem; 
+      }
+      .curiosity-nav { padding: 1.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#" class="logo">Salt&Light</a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#sotc">SOTC</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- NEW: Curated "Must-Know for Insurance Curious" Navigation -->
+  <section class="curiosity-nav">
+    <div class="curiosity-container">
+      <!-- URGENT CATEGORY - People who MUST act NOW -->
+      <div class="urgent-category">
+        <a href="#" class="urgent-card">
+          <div class="nav-card-icon">🚨</div>
+          <div class="nav-card-title">Hospital Bills</div>
+          <div class="nav-card-subtitle">S$15K dengue ICU? S$250K cancer? 74% Singaporeans have CI gaps. <strong>Get hospital cash + multiple payouts before crisis hits.</strong></div>
+          <div class="nav-card-cta">Fix Coverage Now</div>
+        </a>
+        
+        <a href="#" class="urgent-card">
+          <div class="nav-card-icon">💔</div>
+          <div class="nav-card-title">Family Left Behind</div>
+          <div class="nav-card-subtitle">S$331K average life cover vs S$1M+ mortgage + kids needs. <strong>One accident = 10 years savings gone.</strong></div>
+          <div class="nav-card-cta">Protect Family</div>
+        </a>
+        
+        <a href="#" class="urgent-card">
+          <div class="nav-card-icon">⏰</div>
+          <div class="nav-card-title">No Retirement Income</div>
+          <div class="nav-card-subtitle">47% skip coverage thinking "too expensive". CPF alone = S$1.2K/mth max. <strong>Lock 4-6% guaranteed now.</strong></div>
+          <nav-card-cta">Start Retirement</div>
+        </a>
+      </div>
+
+      <!-- NEW MIGRANT CATEGORY - Fresh arrivals asking "How SG works?" -->
+      <div class="newcomer-category">
+        <a href="#" class="newcomer-card">
+          <div class="nav-card-icon">🌏</div>
+          <div class="nav-card-title">MediShield Explained</div>
+          <div class="nav-card-subtitle">C ward only. No private hospitals. No cancer payouts. <strong>PRUShield Global = A1 worldwide for PRs/expats.</strong></div>
+          <div class="nav-card-cta">Global Coverage</div>
+        </a>
+        
+        <a href="#" class="newcomer-card">
+          <div class="nav-card-icon">📚</div>
+          <div class="nav-card-title">Kids Education Fund</div>
+          <div class="nav-card-subtitle">S$300K uni fees by 2045. <strong>Endowment = 3-4% guaranteed vs bank 0.5%.</strong> Start S$200/month now.</div>
+          <div class="nav-card-cta">Save for Kids</div>
+        </a>
+        
+        <a href="#" class="newcomer-card">
+          <div class="nav-card-icon">🏠</div>
+          <div class="nav-card-title">HDB Mortgage Protection</div>
+          <div class="nav-card-subtitle">S$800K loan? 30yr policy covers 30%. <strong>Upgrade debt protection before bank calls.</strong></div>
+          <div class="nav-card-cta">HDB Safe</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Headers (Salt&Light categories - now footer level) -->
+  <section class="content-headers" style="background: #f8f9fa; padding: 1rem 0; margin: 2rem 0;">
+    <div class="curiosity-container">
+      <div class="content-nav" style="justify-content: center; gap: 1rem;">
+        <a href="https://saltandlight.sg/leadership/">Leadership</a>
+        <a href="https://saltandlight.sg/service/">Service</a>
+        <a href="https://saltandlight.sg/family/">Family</a>
+        <a href="https://saltandlight.sg/work/">Work</a>
+        <a href="https://saltandlight.sg/profiles/">Profiles</a>
+        <a href="https://saltandlight.sg/?post_type=videos">Videos</a>
+        <a href="https://thirst.sg/donate/">Donate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="curiosity-container">
+      <h1>Faith at Work</h1>
+      <p class="hero-subtitle">Most of us spend more than half our waking hours at work. Salt&Light is where Christians unite to see God in the 9-to-5.</p>
+    </div>
+  </section>
+
+  <!-- Rest of content (stories, newsletter, footer unchanged) -->
+  <!-- [Previous featured stories, newsletter, footer sections remain identical] -->
+
+  <footer class="footer" style="margin-top: 4rem;">
+    <div class="curiosity-container">
+      <div style="text-align: center; padding: 2rem 0; color: #a0aec0;">
+        <p>&copy; 2026 Salt&Light. Licensed Financial Consultant | Prudential Singapore</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
