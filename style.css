@@ -541,6 +541,139 @@ a:hover {
 	min-width: 0; 
 }
 
+html,
+body {
+	height: 100%;
+	max-width: 1366px;
+	margin: 0 auto;
+}
+
+/*=============== ALL YOUR EXISTING CSS REMAINS EXACTLY THE SAME ===============*/
+.box { /* ... your existing box styles ... */ }
+.logo-button { /* ... unchanged ... */ }
+/* ... [all your grids, tabs, buttons, etc. remain untouched] ... */
+
+/*=============== NEW HERO SECTION STYLES ADDED HERE ===============*/
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 5rem 20px 4rem;
+  margin: 20px; /* Matches your content margins */
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Text + Image */
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.hero-text {
+  max-width: 650px;
+}
+
+.hero-eyebrow {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  font-family: 'Inter', Lato, 'Segoe UI', Tahoma, sans-serif;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  font-family: 'Inter', Tahoma, sans-serif;
+}
+
+.hero-body {
+  font-size: 1.05rem;
+  opacity: 0.95;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-family: 'Inter', 'Times New Roman', serif;
+}
+
+.hero-body strong {
+  color: #f6e05e;
+  font-weight: 600;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #f6e05e;
+  color: #1a202c;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  font-size: 1.05rem;
+  margin-top: 1rem;
+  font-family: tahoma;
+}
+
+.hero-cta:hover {
+  background: #ecc94b;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+}
+
+.hero-image {
+  min-height: 320px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f7fafc;
+  text-align: center;
+  padding: 2.5rem;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+  position: relative;
+}
+
+.hero-image::before {
+  content: '📊';
+  font-size: 4rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0.3;
+}
+
+.hero-image-inner {
+  max-width: 280px;
+}
+
+/* Mobile Responsive - Works with your existing media queries */
+@media only screen and (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero h1 { font-size: 2.2rem; }
+  .hero { padding: 3rem 20px 2rem; margin: 10px; }
+}
+
+/* Wide screen compatibility with your 1366px max-width */
+@media only screen and (min-width: 1367px) {
+  .hero { margin: 20px 0; }
+}
 
 
 
