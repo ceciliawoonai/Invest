@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cecilia&Shield — Insurance at Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* [All existing styles unchanged - only hero section updated] */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      line-height: 1.6; 
+      color: #2d3748; 
+      background: #fafbfc;
+    }
+    
+    /* [Header, Financial Headers, Content Headers - unchanged] */
+    .header {
+      background: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e53e3e;
+      text-decoration: none;
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-menu a {
+      color: #4a5568;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: #e53e3e; }
+
+    .financial-headers-1 {
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .financial-nav-1 {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .financial-headers-2 {
+      background: white;
+      padding: 1.5rem 0;
+      border-bottom: 2px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .financial-nav-2 {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    
+    .financial-nav a {
+      display: block;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+      border-radius: 12px;
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .financial-nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+    .financial-nav a:hover::before { left: 100%; }
+    .financial-nav a:hover {
+      background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(229,62,62,0.4);
+      border-color: rgba(229,62,62,0.3);
+    }
+    .financial-nav i {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+
+    .content-headers {
+      background: #f8f9fa;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .content-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .content-nav a {
+      color: #4a5568;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+    .content-nav a:hover {
+      background: #e53e3e;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* Hero - UPDATED WITH STORY COPY */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 5rem 0 4rem;
+    }
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: start;
+    }
+    .hero-text {
+      max-width: 650px;
+    }
+    .hero-eyebrow {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    .hero-body {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .hero-body strong {
+      color: #f6e05e;
+      font-weight: 600;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: #f6e05e;
+      color: #1a202c;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+      font-size: 1.05rem;
+      margin-top: 1rem;
+    }
+    .hero-cta:hover {
+      background: #ecc94b;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+    }
+    .hero-image {
+      min-height: 320px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.28), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(0,0,0,0.25), transparent 55%),
+                  linear-gradient(135deg, #1a202c, #2d3748);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f7fafc;
+      text-align: center;
+      padding: 2.5rem;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    }
+    .hero-image-inner {
+      max-width: 280px;
+    }
+    .hero-image-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #fed7e2;
+      margin-bottom: 0.5rem;
+    }
+    .hero-image-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* [Rest of styles unchanged] */
+    .featured {
+      padding: 4rem 0;
+      background: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #2d3748;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .story-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .story-image {
+      height: 200px;
+      background: linear-gradient(45deg, #e53e3e, #f56565);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+    .story-content {
+      padding: 1.5rem;
+    }
+    .story-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+    .story-meta {
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .story-excerpt {
+      color: #4a5568;
+      line-height: 1.7;
+    }
+
+    .newsletter {
+      background: linear-gradient(135deg, #2d3748, #4a5568);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .newsletter form {
+      max-width: 500px;
+      margin: 2rem auto;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .newsletter input {
+      padding: 1rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      flex: 1;
+      min-width: 250px;
+    }
+    .newsletter button {
+      padding: 1rem 2rem;
+      background: #e53e3e;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .newsletter button:hover { background: #c53030; }
+
+    .footer {
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 3rem 0 1rem;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .footer a {
+      color: #e2e8f0;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer a:hover { color: #e53e3e; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .nav-menu, .content-nav { display: none; }
+      .financial-nav-1, .financial-nav-2 { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.8rem; 
+      }
+      .financial-nav a { padding: 0.8rem 1rem; font-size: 1rem; }
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero { padding: 3rem 0 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- [Header unchanged] -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#" class="logo">Cecilia&Shield</a>
+      <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#event">Event</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- [Financial Headers unchanged] -->
+  <section class="financial-headers-1">
+    <div class="financial-nav-1 financial-nav">
+      <a href="#"><i class="fas fa-graduation-cap"></i>Young Professionals</a>
+      <a href="#"><i class="fas fa-users"></i>Families</a>
+      <a href="#"><i class="fas fa-globe"></i>Expats</a>
+      <a href="#"><i class="fas fa-briefcase"></i>High Net Worth</a>
+    </div>
+  </section>
+
+  <section class="financial-headers-2">
+    <div class="financial-nav-2 financial-nav">
+      <a href="#"><i class="fas fa-heartbeat"></i>Health Protection</a>
+      <a href="#"><i class="fas fa-shield-alt"></i>Life Protection</a>
+      <a href="#"><i class="fas fa-chart-line"></i>Wealth Accumulation</a>
+      <a href="#"><i class="fas fa-users"></i>Legacy Planning</a>
+    </div>
+  </section>
+
+  <section class="content-headers">
+    <div class="content-nav">
+      <a href="#cases">Case Files</a>
+      <a href="#claims">Claims</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#refer">Refer & Earn</a>
+    </div>
+  </section>
+
+  <!-- Hero - FULL STORY COPY INTEGRATED -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Insurance at Work</div>
+        <h1>Better Advice with analytics. Better Understood™</h1>
+        
+        <p class="hero-body">
+          Imagine you've always bought insurance through hard sells and gimmicks. Then you hear the pitch: <strong>"Better experience or your money back."</strong> Suddenly, you rethink — maybe you've just added comfort to your shopping cart.
+        </p>
+
+        <p class="hero-body">
+          But then you learn the truth: this isn't some special gift. It's your <strong>built-in legal right</strong> — the free-
