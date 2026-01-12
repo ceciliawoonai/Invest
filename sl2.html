@@ -156,7 +156,7 @@
       transform: translateY(-1px);
     }
 
-    /* Hero */
+    /* Hero - UPDATED COPY */
     .hero {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
@@ -250,7 +250,68 @@
       margin-bottom: 0.5rem;
     }
 
-    /* NEW CONTACT SECTION */
+    /* Featured Stories */
+    .featured {
+      padding: 4rem 0;
+      background: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #2d3748;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .story-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .story-image {
+      height: 200px;
+      background: linear-gradient(45deg, #e53e3e, #f56565);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+    .story-content {
+      padding: 1.5rem;
+    }
+    .story-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+    .story-meta {
+      color: #718096;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .story-excerpt {
+      color: #4a5568;
+      line-height: 1.7;
+    }
+
+    /* Contact Section */
     .contact-section {
       padding: 4rem 0;
       background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
@@ -316,67 +377,6 @@
       font-weight: 600;
       text-decoration: none;
       display: inline-block;
-    }
-
-    /* Featured Stories */
-    .featured {
-      padding: 4rem 0;
-      background: white;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 3rem;
-      color: #2d3748;
-    }
-    .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-    .story-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-    .story-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-    .story-image {
-      height: 200px;
-      background: linear-gradient(45deg, #e53e3e, #f56565);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: white;
-    }
-    .story-content {
-      padding: 1.5rem;
-    }
-    .story-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #2d3748;
-    }
-    .story-meta {
-      color: #718096;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    .story-excerpt {
-      color: #4a5568;
-      line-height: 1.7;
     }
 
     /* Newsletter */
@@ -506,28 +506,33 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
-  <div class="hero-eyebrow">Uncovered Insurance at Work</div>
-  <h1>Insured with Analytics — Turn Your Myths into Understanding</h1>
-  
-  <p class="hero-body">
-    Everyone knows insurance matters but fears <strong>mis-sold, over-sold, pressure-sold</strong>.
-  </p>
-  <p class="hero-body">
-    You've heard it a thousand ways: <strong>"A different, better insurance experience—or your money back."</strong> 
-    Now you're being sold Comfort. The warm fuzzy feeling.
-  </p>
-  <p class="hero-body">
-    Truth: All Singapore insurers treat mis-selling seriously (MAS regulations). Beyond 12 months, 
-    demand <strong>Internal Review → FIDReC mediation → MAS oversight</strong>. Your rights never expire.
-  </p>
-  <p class="hero-body">
-    <strong>No agency beats this systemic safety net.</strong>
-  </p>
-  
-  <a href="#contact" class="hero-cta">Get Clear Advice Now <i class="fas fa-arrow-right"></i></a>
-</div>
+        <div class="hero-eyebrow">Uncovered Insurance at Work</div>
+        <h1>Insured with Analytics — Turn Your Myths into Understanding</h1>
+        
+        <p class="hero-body">
+          Everyone knows insurance matters but fears <strong>mis-sold, over-sold, pressure-sold</strong>.
+        </p>
+        <p class="hero-body">
+          You've heard it a thousand ways: <strong>"A different, better insurance experience—or your money back."</strong> Now even Comfort is being put on sale.
+        </p>
+        <h2 style="font-size: 1.8rem; margin: 2rem 0 1rem; color: #f6e05e;">The Quiet Truth:</h2>
+        <p class="hero-body">
+          In Singapore, MAS treats mis-selling and over-selling seriously, backed by regulations and industry codes. Anytime you discover you've been over-sold, simply approach any insurer—they're obligated to launch a clear, impartial investigation to protect your rights.
+        </p>
+        <p class="hero-body">
+          These rights don't vanish after a year; this safety net lasts <strong>indefinitely</strong>. No gimmicky agent "guarantee" needed—it's real protection, enforced by MAS for the long haul. No single agency beats this systemic safety net.
+        </p>
+        <p class="hero-body">
+          <strong>Good insurance is not sold, it is understood.</strong> We don't sell promises. We deliver <strong>clarity</strong>—decoding policies, benchmarking options, stripping away fog—to turn your myths into understanding.
+        </p>
+        
+        <p class="hero-body" style="font-weight: 600; font-size: 1.1rem;">
+          Ready for advice that respects your intelligence?
+        </p>
+        
+        <a href="#contact" class="hero-cta">Talk to Us → <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-      
       <div class="hero-image">
         <div class="hero-image-inner">
           <div class="hero-image-eyebrow">Analytics in Action</div>
@@ -570,7 +575,7 @@
     </div>
   </section>
 
-  <!-- NEW CONTACT SECTION -->
+  <!-- Contact Section -->
   <section id="contact" class="contact-section">
     <div class="contact-container">
       <h2 class="contact-title">Let's Talk Insurance</h2>
