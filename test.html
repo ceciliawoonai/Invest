@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coverage Clarity Test™</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 2rem; 
+            line-height: 1.6; 
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 2rem; 
+            color: #1e40af;
+        }
+        .header h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .score-section { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            margin-bottom: 2rem;
+        }
+        .question { 
+            margin-bottom: 1.5rem; 
+            padding: 1.5rem; 
+            background: #f1f5f9; 
+            border-radius: 8px; 
+            border-left: 4px solid #3b82f6;
+        }
+        .question h3 { 
+            color: #1e40af; 
+            margin-bottom: 1rem; 
+            font-size: 1.1rem;
+        }
+        .radio-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+        input[type="radio"] { margin-right: 0.5rem; transform: scale(1.2); }
+        label { 
+            display: flex; 
+            align-items: center; 
+            padding: 0.5rem 1rem; 
+            background: white; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        input[type="radio"]:checked + label { 
+            background: #dbeafe; 
+            border-color: #3b82f6; 
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .score-display { 
+            font-size: 3rem; 
+            font-weight: 700; 
+            text-align: center; 
+            margin: 2rem 0;
+        }
+        .score-pro { color: #16a34a; }
+        .score-good { color: #eab308; }
+        .score-warning { color: #ea580c; }
+        .score-danger { color: #dc2626; }
+        .cta { 
+            text-align: center; 
+            padding: 2rem; 
+            background: linear-gradient(135deg, #1e40af, #3b82f6); 
+            color: white; 
+            border-radius: 12px; 
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-top: 2rem;
+        }
+        .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(30,64,175,0.3); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ Coverage Clarity Test™</h1>
+        <p><strong>Take 60 seconds. Get your Coverage Score out of 100.</strong></p>
+    </div>
+
+    <form id="clarityTest">
+        <!-- Section 1: Core Protection (40 pts) -->
+        <div class="score-section">
+            <h2>Section 1: Core Protection (40 pts)</h2>
+            
+            <div class="question">
+                <h3>Q1: Death/TPD (+10 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q1" value="10" id="q1-yes">
+                    <label for="q1-yes">✅ Yes - 5-10x income covered</label>
+                    <input type="radio" name="q1" value="0" id="q1-no">
+                    <label for="q1-no">❌ No</label>
+                    <input type="radio" name="q1" value="0" id="q1-unsure">
+                    <label for="q1-unsure">❓ Not Sure</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Q2: Critical Illness (+10 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q2" value="10" id="q2-yes">
+                    <label for="q2-yes">✅ Yes - Cancer/heart/stroke covered</label>
+                    <input type="radio" name="q2" value="0" id="q2-no">
+                    <label for="q2-no">❌ No</label>
+                    <input type="radio" name="q2" value="0" id="q2-unsure">
+                    <label for="q2-unsure">❓ Not Sure</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Q3: Hospital Cash (+10 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q3" value="10" id="q3-yes">
+                    <label for="q3-yes">✅ Yes - Daily cash benefit</label>
+                    <input type="radio" name="q3" value="0" id="q3-no">
+                    <label for="q3-no">❌ No</label>
+                    <input type="radio" name="q3" value="0" id="q3-unsure">
+                    <label for="q3-unsure">❓ Not Sure</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Q4: Accident/Disability (+10 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q4" value="10" id="q4-yes">
+                    <label for="q4-yes">✅ Yes - Monthly income if can't work</label>
+                    <input type="radio" name="q4" value="0" id="q4-no">
+                    <label for="q4-no">❌ No</label>
+                    <input type="radio" name="q4" value="0" id="q4-unsure">
+                    <label for="q4-unsure">❓ Not Sure</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Value Check (30 pts) -->
+        <div class="score-section">
+            <h2>Section 2: Value Check (30 pts)</h2>
+            
+            <div class="question">
+                <h3>Q5: Premium Efficiency (+15 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q5" value="15" id="q5-yes">
+                    <label for="q5-yes">✅ Yes - Premiums < 2% of income</label>
+                    <input type="radio" name="q5" value="0" id="q5-no">
+                    <label for="q5-no">❌ No</label>
+                    <input type="radio" name="q5" value="0" id="q5-dontknow">
+                    <label for="q5-dontknow">❓ Don't Know</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>Q6: No Overlap (+15 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q6" value="15" id="q6-nooverlap">
+                    <label for="q6-nooverlap">✅ No - No overlapping coverage</label>
+                    <input type="radio" name="q6" value="0" id="q6-overlap">
+                    <label for="q6-overlap">❌ Yes - 3+ policies overlap</label>
+                    <input type="radio" name="q6" value="0" id="q6-unsure">
+                    <label for="q6-unsure">❓ Not Sure</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Clarity (30 pts) -->
+        <div class="score-section">
+            <h2>Section 3: Clarity (30 pts)</h2>
+            
+            <div class="question">
+                <h3>Q7: Policy Confidence (+30 pts)</h3>
+                <div class="radio-group">
+                    <input type="radio" name="q7" value="30" id="q7-yes">
+                    <label for="q7-yes">✅ Yes - Can explain each policy simply</label>
+                    <input type="radio" name="q7" value="0" id="q7-no">
+                    <label for="q7-no">❌ No</label>
+                    <input type="radio" name="q7" value="0" id="q7-notconfident">
+                    <label for="q7-notconfident">❓ Not Confident</label>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <button type="button" onclick="calculateScore()" 
+                style="padding: 1rem 2rem; font-size: 1.1rem; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                🧮 Calculate My Score
+            </button>
+        </div>
+    </form>
+
+    <div id="scoreResult" style="display: none;" class="score-section">
+        <div class="score-display" id="scoreNumber"></div>
+        <div id="scoreMessage"></div>
+        <p style="text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+            <strong>Want your personalized analysis?</strong>
+        </p>
+        <a href="https://havend.com/#contact" class="cta">
+            📋 Get Free Detailed Review →
+        </a>
+    </div>
+
+    <script>
+        function calculateScore() {
+            const form = document.getElementById('clarityTest');
+            const formData = new FormData(form);
+            let totalScore = 0;
+
+            // Sum all selected radio button values
+            for (let [key, value] of formData.entries()) {
+                if (!isNaN(value)) {
+                    totalScore += parseInt(value);
+                }
+            }
+
+            // Display results
+            const scoreElement = document.getElementById('scoreNumber');
+            const messageElement = document.getElementById('scoreMessage');
+            const resultSection = document.getElementById('scoreResult');
+
+            scoreElement.textContent = totalScore + '/100';
+            scoreElement.className = 'score-display';
+
+            let message = '';
+            let colorClass = '';
+
+            if (totalScore >= 90) {
+                message = '🏆 Protection Pro<br>Your coverage is solid and efficient.';
+                colorClass = 'score-pro';
+            } else if (totalScore >= 70) {
+                message = '👍 Good Foundation<br>Strong basics, minor tweaks needed.';
+                colorClass = 'score-good';
+            } else if (totalScore >= 50) {
+                message = '⚠️ Coverage Gaps<br>Missing essentials or overpaying.';
+                colorClass = 'score-warning';
+            } else {
+                message = '🚨 Urgent Review Needed<br>Major blind spots or value issues.';
+                colorClass = 'score-danger';
+            }
+
+            scoreElement.classList.add(colorClass);
+            messageElement.innerHTML = message;
+            resultSection.style.display = 'block';
+            
+            // Scroll to results
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
