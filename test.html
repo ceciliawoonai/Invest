@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coverage Clarity Test™</title>
+    <title>Coverage Clarity Assessment™</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -17,14 +17,29 @@
         }
         .header { 
             text-align: center; 
-            margin-bottom: 2rem; 
+            margin-bottom: 3rem; 
             color: #1e40af;
         }
         .header h1 { 
             font-size: 2.5rem; 
             margin-bottom: 0.5rem; 
         }
-        .score-section { 
+        .intro { 
+            background: white; 
+            padding: 2.5rem; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            margin-bottom: 2rem;
+            border-left: 5px solid #1e40af;
+        }
+        .intro h2 { 
+            color: #dc2626; 
+            font-size: 1.5rem; 
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .intro strong { color: #1e40af; }
+        .question-section { 
             background: white; 
             padding: 2rem; 
             border-radius: 12px; 
@@ -48,12 +63,13 @@
         label { 
             display: flex; 
             align-items: center; 
-            padding: 0.5rem 1rem; 
+            padding: 0.75rem 1.25rem; 
             background: white; 
-            border-radius: 6px; 
+            border-radius: 8px; 
             cursor: pointer; 
             transition: all 0.2s;
             border: 2px solid transparent;
+            font-weight: 500;
         }
         input[type="radio"]:checked + label { 
             background: #dbeafe; 
@@ -61,8 +77,8 @@
             box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
         }
         .score-display { 
-            font-size: 3rem; 
-            font-weight: 700; 
+            font-size: 3.5rem; 
+            font-weight: 800; 
             text-align: center; 
             margin: 2rem 0;
         }
@@ -71,35 +87,74 @@
         .score-warning { color: #ea580c; }
         .score-danger { color: #dc2626; }
         .cta { 
+            display: block;
             text-align: center; 
-            padding: 2rem; 
+            padding: 1.5rem 2rem; 
             background: linear-gradient(135deg, #1e40af, #3b82f6); 
             color: white; 
             border-radius: 12px; 
             text-decoration: none;
-            font-weight: 600;
-            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
             margin-top: 2rem;
+            transition: all 0.3s;
         }
-        .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(30,64,175,0.3); }
+        .cta:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 35px rgba(30,64,175,0.4); 
+        }
+        button { 
+            padding: 1.25rem 3rem; 
+            font-size: 1.2rem; 
+            background: #10b981; 
+            color: white; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer;
+            font-weight: 700;
+            display: block;
+            margin: 2rem auto;
+        }
+        button:hover { background: #059669; transform: translateY(-2px); }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🛡️ Coverage Clarity Test™</h1>
-        <p><strong>Take 60 seconds. Get your Coverage Score out of 100.</strong></p>
+        <h1>🛡️ Coverage Clarity Assessment™</h1>
+        <p><strong>Like InsureWell — discover if your coverage fits your life stage in 3 minutes</strong></p>
+    </div>
+
+    <!-- Intro Copy (Havend Style) -->
+    <div class="intro">
+        <h2>No Mis-selling. No Over-selling. No Pressure-selling.</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+            <em>(We might sound like a broken record, but it's because you deserve better.)</em>
+        </p>
+        <p style="margin-bottom: 1rem;">
+            You're not here for a sales pitch. You just want to be <strong>sure</strong> your insurance works for you — not against you.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+            <strong>Too many people buy coverage they don't understand.</strong> Premiums drain month after month, but when claims come… the fine print disappoints. Or worse — you're paying double for the same protection.
+        </p>
+        <p style="margin-bottom: 2rem;">
+            <strong>Our promise:</strong> Honest clarity about what you have, what you need, and what's costing you too much. No product pushing. Just the truth about your coverage.
+        </p>
+        <p><strong>Not sure where to start?</strong> Take our Coverage Clarity Assessment below. Answer 7 simple questions → get your Protection Score instantly → see exactly what needs fixing.</p>
+        <p style="margin-top: 1rem; font-style: italic; color: #1e40af;">
+            No obligations. Just honest advice. Like InsureWell — but with deeper policy decoding.
+        </p>
     </div>
 
     <form id="clarityTest">
-        <!-- Section 1: Core Protection (40 pts) -->
-        <div class="score-section">
-            <h2>Section 1: Core Protection (40 pts)</h2>
+        <!-- Section 1: Foundational Pillars -->
+        <div class="question-section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Section 1: Foundational Pillars (40 points)</h2>
             
             <div class="question">
                 <h3>Q1: Death/TPD (+10 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q1" value="10" id="q1-yes">
-                    <label for="q1-yes">✅ Yes - 5-10x income covered</label>
+                    <label for="q1-yes">✅ Yes - 5-10x current annual income</label>
                     <input type="radio" name="q1" value="0" id="q1-no">
                     <label for="q1-no">❌ No</label>
                     <input type="radio" name="q1" value="0" id="q1-unsure">
@@ -111,7 +166,7 @@
                 <h3>Q2: Critical Illness (+10 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q2" value="10" id="q2-yes">
-                    <label for="q2-yes">✅ Yes - Cancer/heart/stroke covered</label>
+                    <label for="q2-yes">✅ Yes - Cancer/heart/stroke (big 3)</label>
                     <input type="radio" name="q2" value="0" id="q2-no">
                     <label for="q2-no">❌ No</label>
                     <input type="radio" name="q2" value="0" id="q2-unsure">
@@ -120,10 +175,10 @@
             </div>
 
             <div class="question">
-                <h3>Q3: Hospital Cash (+10 pts)</h3>
+                <h3>Q3: Hospitalisation (+10 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q3" value="10" id="q3-yes">
-                    <label for="q3-yes">✅ Yes - Daily cash benefit</label>
+                    <label for="q3-yes">✅ Yes - Daily hospital cash benefit</label>
                     <input type="radio" name="q3" value="0" id="q3-no">
                     <label for="q3-no">❌ No</label>
                     <input type="radio" name="q3" value="0" id="q3-unsure">
@@ -132,10 +187,10 @@
             </div>
 
             <div class="question">
-                <h3>Q4: Accident/Disability (+10 pts)</h3>
+                <h3>Q4: Personal Accident (+10 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q4" value="10" id="q4-yes">
-                    <label for="q4-yes">✅ Yes - Monthly income if can't work</label>
+                    <label for="q4-yes">✅ Yes - Income if accident stops work</label>
                     <input type="radio" name="q4" value="0" id="q4-no">
                     <label for="q4-no">❌ No</label>
                     <input type="radio" name="q4" value="0" id="q4-unsure">
@@ -144,15 +199,15 @@
             </div>
         </div>
 
-        <!-- Section 2: Value Check (30 pts) -->
-        <div class="score-section">
-            <h2>Section 2: Value Check (30 pts)</h2>
+        <!-- Section 2: Value for Money -->
+        <div class="question-section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Section 2: Value for Money (30 points)</h2>
             
             <div class="question">
-                <h3>Q5: Premium Efficiency (+15 pts)</h3>
+                <h3>Q5: Premium Check (+15 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q5" value="15" id="q5-yes">
-                    <label for="q5-yes">✅ Yes - Premiums < 2% of income</label>
+                    <label for="q5-yes">✅ Yes - Premiums < 2% household income</label>
                     <input type="radio" name="q5" value="0" id="q5-no">
                     <label for="q5-no">❌ No</label>
                     <input type="radio" name="q5" value="0" id="q5-dontknow">
@@ -161,51 +216,46 @@
             </div>
 
             <div class="question">
-                <h3>Q6: No Overlap (+15 pts)</h3>
+                <h3>Q6: Overlap Check (+15 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q6" value="15" id="q6-nooverlap">
-                    <label for="q6-nooverlap">✅ No - No overlapping coverage</label>
+                    <label for="q6-nooverlap">✅ No Overlap - Clean coverage</label>
                     <input type="radio" name="q6" value="0" id="q6-overlap">
-                    <label for="q6-overlap">❌ Yes - 3+ policies overlap</label>
+                    <label for="q6-overlap">❌ Yes - Multiple policies overlap</label>
                     <input type="radio" name="q6" value="0" id="q6-unsure">
                     <label for="q6-unsure">❓ Not Sure</label>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: Clarity (30 pts) -->
-        <div class="score-section">
-            <h2>Section 3: Clarity (30 pts)</h2>
+        <!-- Section 3: Life Stage Fit -->
+        <div class="question-section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Section 3: Life Stage Fit (30 points)</h2>
             
             <div class="question">
-                <h3>Q7: Policy Confidence (+30 pts)</h3>
+                <h3>Q7: Alignment (+30 pts)</h3>
                 <div class="radio-group">
                     <input type="radio" name="q7" value="30" id="q7-yes">
-                    <label for="q7-yes">✅ Yes - Can explain each policy simply</label>
+                    <label for="q7-yes">✅ Yes - Reviewed since last life change</label>
                     <input type="radio" name="q7" value="0" id="q7-no">
                     <label for="q7-no">❌ No</label>
-                    <input type="radio" name="q7" value="0" id="q7-notconfident">
-                    <label for="q7-notconfident">❓ Not Confident</label>
+                    <input type="radio" name="q7" value="0" id="q7-unsure">
+                    <label for="q7-unsure">❓ Not Sure</label>
                 </div>
             </div>
         </div>
 
-        <div style="text-align: center; margin: 2rem 0;">
-            <button type="button" onclick="calculateScore()" 
-                style="padding: 1rem 2rem; font-size: 1.1rem; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer;">
-                🧮 Calculate My Score
-            </button>
-        </div>
+        <button type="button" onclick="calculateScore()">🧮 Calculate My Protection Score</button>
     </form>
 
-    <div id="scoreResult" style="display: none;" class="score-section">
+    <div id="scoreResult" style="display: none;" class="question-section">
         <div class="score-display" id="scoreNumber"></div>
-        <div id="scoreMessage"></div>
-        <p style="text-align: center; margin-top: 1rem; font-size: 1.1rem;">
-            <strong>Want your personalized analysis?</strong>
+        <div id="scoreMessage" style="text-align: center; font-size: 1.3rem; margin: 1.5rem 0;"></div>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
+            <strong>Want your personalized gap analysis + 3 simple fixes?</strong>
         </p>
         <a href="https://havend.com/#contact" class="cta">
-            📋 Get Free Detailed Review →
+            📋 Get Your Free Detailed Analysis →
         </a>
     </div>
 
@@ -215,14 +265,12 @@
             const formData = new FormData(form);
             let totalScore = 0;
 
-            // Sum all selected radio button values
             for (let [key, value] of formData.entries()) {
                 if (!isNaN(value)) {
                     totalScore += parseInt(value);
                 }
             }
 
-            // Display results
             const scoreElement = document.getElementById('scoreNumber');
             const messageElement = document.getElementById('scoreMessage');
             const resultSection = document.getElementById('scoreResult');
@@ -234,24 +282,22 @@
             let colorClass = '';
 
             if (totalScore >= 90) {
-                message = '🏆 Protection Pro<br>Your coverage is solid and efficient.';
+                message = '🏆 Optimal Protection<br>Your coverage fits your life perfectly.';
                 colorClass = 'score-pro';
             } else if (totalScore >= 70) {
-                message = '👍 Good Foundation<br>Strong basics, minor tweaks needed.';
+                message = '👍 Solid Foundation<br>Good essentials. Room to optimise.';
                 colorClass = 'score-good';
             } else if (totalScore >= 50) {
-                message = '⚠️ Coverage Gaps<br>Missing essentials or overpaying.';
+                message = '⚠️ Gaps Detected<br>Missing essentials or overpaying.';
                 colorClass = 'score-warning';
             } else {
-                message = '🚨 Urgent Review Needed<br>Major blind spots or value issues.';
+                message = '🚨 Urgent Review Needed<br>Major blind spots detected.';
                 colorClass = 'score-danger';
             }
 
             scoreElement.classList.add(colorClass);
             messageElement.innerHTML = message;
             resultSection.style.display = 'block';
-            
-            // Scroll to results
             resultSection.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
