@@ -3,319 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIA Singapore Detailed Protection Gap Calculator - EXACT</title>
+    <title>Financial Planning Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            max-width: 900px; margin: 0 auto; padding: 2rem; 
-            line-height: 1.6; background: #f8fafc; color: #1e293b;
-        }
-        .header { text-align: center; margin-bottom: 3rem; color: #1e40af; }
-        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .lia-section { 
-            background: white; padding: 2.5rem; border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;
-            border-left: 5px solid #1e40af;
-            position: relative;
-        }
-        .lia-section h2 { 
-            color: #1e40af; font-size: 1.8rem; margin-bottom: 2rem; 
-            text-align: center; font-weight: 700;
-        }
-        .section-number { 
-            position: absolute; top: -15px; left: 30px; background: #1e40af; 
-            color: white; width: 40px; height: 40px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-weight: 700;
-        }
-        .input-group { 
-            margin-bottom: 1.5rem; padding: 1.5rem; 
-            background: #f1f5f9; border-radius: 8px; border-left: 4px solid #3b82f6;
-        }
-        .input-group h3 { color: #1e40af; margin-bottom: 1rem; font-size: 1.1rem; }
-        .input-row { display: flex; gap: 1.5rem; align-items: end; flex-wrap: wrap; }
+        .input-group { margin-bottom: 1rem; }
+        .input-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .input-row .input-group { flex: 1; }
         input[type="number"], select { 
-            padding: 0.75rem 1rem; border: 2px solid #e2e8f0; border-radius: 8px; 
-            font-size: 1rem; min-width: 160px; width: 160px;
+            width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem; 
         }
-        input[type="number"]:focus, select:focus { 
-            outline: none; border-color: #3b82f6; 
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-        }
-        .score-display { 
-            font-size: 4.5rem; font-weight: 800; text-align: center; margin: 2rem 0;
-            padding: 2.5rem; border-radius: 16px; line-height: 1.2;
-        }
-        .score-gap { color: #dc2626; background: #fef2f2; border: 3px solid #fecaca; }
-        .score-moderate { color: #ca8a04; background: #fef3c7; border: 3px solid #fde68a; }
-        .score-well { color: #16a34a; background: #f0fdf4; border: 3px solid #bbf7d0; }
-        .protection-level { font-size: 2rem; text-align: center; margin: 1.5rem 0; font-weight: 700; }
-        button { 
-            padding: 1.5rem 3.5rem; font-size: 1.3rem; background: linear-gradient(135deg, #10b981, #059669); 
-            color: white; border: none; border-radius: 12px; cursor: pointer;
-            font-weight: 700; display: block; margin: 3rem auto; box-shadow: 0 10px 25px rgba(16,185,129,0.3);
-        }
-        button:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(16,185,129,0.4); }
-        .cta { 
-            display: block; text-align: center; padding: 1.75rem 2.5rem; 
-            background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; 
-            border-radius: 16px; text-decoration: none; font-weight: 700; 
-            font-size: 1.2rem; margin-top: 2rem; box-shadow: 0 10px 25px rgba(30,64,175,0.3);
-        }
-        .cta:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(30,64,175,0.4); }
+        input[style*="display:none"] { display: none !important; }
+        small { display: block; color: #6b7280; font-size: 0.875rem; margin-top: 0.25rem; }
     </style>
 </head>
-<body>
-    <div class="header">
-        <h1>🛡️ LIA Singapore Detailed Protection Gap Calculator</h1>
-        <p style="font-size: 1.2rem;"><strong>EXACT replica of LIA's 4-section Detailed Calculator</strong></p>
-    </div>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Financial Needs Calculator</h1>
+        
+        <!-- Section 2: Dependants -->
+        <section id="section2" class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6 border-b pb-2">Dependants</h2>
+            <!-- Original content goes here, add these after "Number of other dependants" -->
+            <div class="input-group">
+                <h3 class="font-medium text-gray-900 mb-2">Children with special needs?</h3>
+                <label class="flex items-center mb-2">
+                    <input type="checkbox" id="specialNeedsChildren" class="mr-2 w-4 h-4 text-blue-600">
+                    Yes
+                </label>
+                <input type="number" id="specialNeedsAges" placeholder="Age(s)" class="hidden">
+            </div>
+            <div class="input-group">
+                <h3 class="font-medium text-gray-900 mb-2">Dependants' life expectancy (years)</h3>
+                <input type="number" id="dependantsLifeExpectancy" value="80" min="0">
+            </div>
+        </section>
 
-    <!-- HAVEND INTRO -->
-    <div class="lia-section">
-        <h2 style="text-align: center; margin-bottom: 1.5rem;">No Mis-selling. No Over-selling. No Pressure-selling.</h2>
-        <p style="font-size: 1.1rem; text-align: center; margin-bottom: 1rem;">
-            <strong>LIA Singapore's Detailed Calculator</strong> — The industry gold standard with <em>exactly their 4 sections</em>.
-        </p>
-        <p style="text-align: center; font-style: italic;">
-            Uses LIA's official 60% baseline threshold + <strong>exact messaging</strong> from their tool.
-        </p>
-    </div>
-
-    <form id="liaExactCalculator">
-        <!-- SECTION 1: ABOUT YOU (LIA Exact) -->
-        <div class="lia-section">
-            <div class="section-number">1</div>
-            <h2>About You</h2>
+        <!-- Section 3: Expenses -->
+        <section id="section3" class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6 border-b pb-2">Expenses</h2>
+            <!-- Original content goes here, add these after respective fields -->
+            <!-- After Outstanding housing loan -->
+            <div class="input-group">
+                <h3 class="font-medium text-gray-900 mb-2">Mortgage years remaining</h3>
+                <input type="number" id="mortgageYearsLeft" value="20" min="0">
+            </div>
+            
+            <!-- After Education expenses -->
             <div class="input-row">
                 <div class="input-group">
-                    <h3>What is your age?</h3>
-                    <input type="range" id="age" min="20" max="70" value="35" oninput="document.getElementById('ageValue').textContent=this.value">
-                    <div style="text-align: center; margin-top: 0.5rem;">
-                        <span id="ageValue">35</span> years old
-                    </div>
+                    <h3 class="font-medium text-gray-900 mb-2">CI Recovery Period</h3>
+                    <select id="ciRecoveryPeriod">
+                        <option value="1">1 year</option>
+                        <option value="3" selected>3 years</option>
+                        <option value="5">5 years</option>
+                        <option value="7">7 years</option>
+                        <option value="10">10+ years</option>
+                    </select>
                 </div>
                 <div class="input-group">
-                    <h3>Gender</h3>
-                    <select id="gender">
-                        <option value="male">Male</option>
-                        <option value="female" selected>Female</option>
-                    </select>
+                    <h3 class="font-medium text-gray-900 mb-2">Renting property?</h3>
+                    <label class="flex items-center mb-2">
+                        <input type="checkbox" id="rentingProperty" class="mr-2 w-4 h-4 text-blue-600">
+                        Yes (annual S$)
+                    </label>
+                    <input type="number" id="annualRent" placeholder="S$" class="hidden">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Resources (COMPLETE REPLACEMENT) -->
+        <section id="section4" class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6 border-b pb-2">Resources</h2>
+            <div class="input-row">
+                <div class="input-group">
+                    <h3 class="font-medium text-gray-900 mb-2">Savings - Mortality Needs</h3>
+                    <input type="number" id="savingsMortality" value="190000" min="0">
+                    <small>Cash for dependants if you pass away</small>
+                </div>
+                <div class="input-group">
+                    <h3 class="font-medium text-gray-900 mb-2">Investments - Mortality Needs</h3>
+                    <input type="number" id="investmentsMortality" value="0" min="0">
                 </div>
             </div>
             <div class="input-row">
                 <div class="input-group">
-                    <h3>Smoking Status</h3>
-                    <select id="smoker">
-                        <option value="no" selected>Non-smoker</option>
-                        <option value="yes">Smoker</option>
-                    </select>
+                    <h3 class="font-medium text-gray-900 mb-2">Savings - CI/Living Needs</h3>
+                    <input type="number" id="savingsCI" value="0" min="0">
+                    <small>Cash for medical/living if diagnosed</small>
                 </div>
                 <div class="input-group">
-                    <h3>Marital Status</h3>
-                    <select id="maritalStatus">
-                        <option value="single">Single</option>
-                        <option value="married" selected>Married</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 2: ABOUT YOUR FAMILY (LIA Exact) -->
-        <div class="lia-section">
-            <div class="section-number">2</div>
-            <h2>About Your Family</h2>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>Is your spouse working?</h3>
-                    <select id="spouseWorking">
-                        <option value="yes">Yes</option>
-                        <option value="no" selected>No</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <h3>Number of children</h3>
-                    <select id="children">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                        <option value="4">4 or more</option>
-                    </select>
+                    <h3 class="font-medium text-gray-900 mb-2">Investments - CI/Living Needs</h3>
+                    <input type="number" id="investmentsCI" value="0" min="0">
                 </div>
             </div>
             <div class="input-group">
-                <h3>Number of other dependants</h3>
-                <select id="otherDependants">
-                    <option value="0" selected>0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3 or more</option>
-                </select>
+                <h3 class="font-medium text-gray-900 mb-2">Total CPF (all accounts)</h3>
+                <input type="number" id="totalCPF" value="130000" min="0">
             </div>
-        </div>
+        </section>
 
-        <!-- SECTION 3: ABOUT YOUR FINANCIAL OVERHEADS (LIA Exact) -->
-        <div class="lia-section">
-            <div class="section-number">3</div>
-            <h2>About Your Financial Overheads</h2>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>Your annual income</h3>
-                    <input type="number" id="yourIncome" value="96000" placeholder="S$">
-                </div>
-                <div class="input-group">
-                    <h3>Spouse's annual income</h3>
-                    <input type="number" id="spouseIncome" value="48000" placeholder="S$">
-                </div>
-            </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>Annual household expenses</h3>
-                    <input type="number" id="householdExpenses" value="60000" placeholder="S$">
-                </div>
-                <div class="input-group">
-                    <h3>Outstanding housing loan</h3>
-                    <input type="number" id="housingLoan" value="400000" placeholder="S$">
-                </div>
-            </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>Other outstanding loans</h3>
-                    <input type="number" id="otherLoans" value="50000" placeholder="S$">
-                </div>
-                <div class="input-group">
-                    <h3>Education expenses per child per year</h3>
-                    <input type="number" id="educationExpenses" value="15000" placeholder="S$">
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 4: ABOUT YOUR FINANCIAL RESOURCES (LIA Exact) -->
-        <div class="lia-section">
-            <div class="section-number">4</div>
-            <h2>About Your Financial Resources</h2>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>Death/TPD coverage</h3>
-                    <input type="number" id="deathTPD" value="500000" placeholder="S$">
-                </div>
-                <div class="input-group">
-                    <h3>Critical illness coverage</h3>
-                    <input type="number" id="criticalIllness" value="250000" placeholder="S$">
-                </div>
-            </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>Cash and deposits</h3>
-                    <input type="number" id="cashDeposits" value="80000" placeholder="S$">
-                </div>
-                <div class="input-group">
-                    <h3>CPF Ordinary Account</h3>
-                    <input type="number" id="cpfOA" value="100000" placeholder="S$">
-                </div>
-            </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3>CPF Special/Medisave/Retirement Account</h3>
-                    <input type="number" id="cpfSAR" value="150000" placeholder="S$">
-                </div>
-                <div class="input-group">
-                    <h3>Other investments</h3>
-                    <input type="number" id="otherInvestments" value="50000" placeholder="S$">
-                </div>
-            </div>
-        </div>
-
-        <button type="button" onclick="calculateExactLiaScore()">🧮 Calculate My LIA Protection Level</button>
-    </form>
-
-    <div id="scoreResult" style="display: none;">
-        <div class="lia-section" style="text-align: center;">
-            <h2 style="color: #1e40af; margin-bottom: 1rem;">HOW WELL PROTECTED ARE YOU?</h2>
-            <div class="score-display" id="scoreNumber"></div>
-            <div class="protection-level" id="protectionLevel"></div>
-            <div id="scoreMessage" style="font-size: 1.2rem; margin: 2rem 0; padding: 2rem; background: #f8fafc; border-radius: 12px; line-height: 1.6;"></div>
-            <a href="https://havend.com/#contact" class="cta">📋 Get Your Personalized LIA Gap Analysis</a>
-        </div>
+        <button class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700">
+            Calculate Needs
+        </button>
     </div>
 
     <script>
-        function calculateExactLiaScore() {
-            // EXACT LIA Detailed Calculator inputs
-            const age = parseInt(document.getElementById('age').value) || 35;
-            const yourIncome = parseInt(document.getElementById('yourIncome').value) || 96000;
-            const spouseIncome = parseInt(document.getElementById('spouseIncome').value) || 48000;
-            const householdExpenses = parseInt(document.getElementById('householdExpenses').value) || 60000;
-            const housingLoan = parseInt(document.getElementById('housingLoan').value) || 400000;
-            const otherLoans = parseInt(document.getElementById('otherLoans').value) || 50000;
-            const educationExpenses = parseInt(document.getElementById('educationExpenses').value) || 15000;
-            const deathTPD = parseInt(document.getElementById('deathTPD').value) || 500000;
-            const criticalIllness = parseInt(document.getElementById('criticalIllness').value) || 250000;
-            const cashDeposits = parseInt(document.getElementById('cashDeposits').value) || 80000;
-            const cpfOA = parseInt(document.getElementById('cpfOA').value) || 100000;
-            const cpfSAR = parseInt(document.getElementById('cpfSAR').value) || 150000;
-            const otherInvestments = parseInt(document.getElementById('otherInvestments').value) || 50000;
-            const children = parseInt(document.getElementById('children').value) || 2;
-            const otherDependants = parseInt(document.getElementById('otherDependants').value) || 0;
-
-            // LIA EXACT: Total Financial Overheads
-            const livingExpenses = householdExpenses * 10; // 10 years
-            const educationCosts = educationExpenses * 16 * children; // 16 years education
-            const totalDebts = housingLoan + otherLoans;
-            const incomeReplacement = yourIncome * 10; // LIA standard
-            const totalOverheads = livingExpenses + educationCosts + totalDebts + incomeReplacement;
-
-            // LIA EXACT: Total Financial Resources  
-            const totalInsurance = deathTPD + criticalIllness;
-            const totalLiquidAssets = cashDeposits + cpfOA * 0.9 + cpfSAR * 0.7 + otherInvestments; // LIA liquidity factors
-            const totalResources = totalInsurance + totalLiquidAssets;
-
-            // LIA EXACT Protection Ratio
-            const protectionRatio = Math.min(100, (totalResources / totalOverheads) * 100);
-
-            // LIA Age adjustment
-            const ageAdjustment = Math.max(50, 100 - ((age - 30) * 1.8));
-            const finalScore = Math.round(protectionRatio * 0.75 + ageAdjustment * 0.25);
-
-            // EXACT LIA Messaging [attached_file:1]
-            const scoreElement = document.getElementById('scoreNumber');
-            const levelElement = document.getElementById('protectionLevel');
-            const messageElement = document.getElementById('scoreMessage');
-            const resultSection = document.getElementById('scoreResult');
-
-            scoreElement.textContent = finalScore + '%';
-            scoreElement.className = 'score-display';
-
-            let levelText = '', message = '', scoreClass = '';
-
-            if (finalScore < 60) {
-                levelText = 'Facing a protection gap';
-                message = `Please note that you are currently <strong>facing a protection gap</strong> as the value of your resources is lower than your overheads<br>
-                <em>(i.e., your protection level <strong>is below</strong> the baseline of 60%)</em><br>
-                <strong>Please take the necessary actions today to narrow your protection gap</strong>`;
-                scoreClass = 'score-gap';
-            } else if (finalScore < 80) {
-                levelText = 'Moderately protected';
-                message = `Well done! You are currently <strong>moderately protected</strong> as your resources are higher than your overheads<br>
-                <em>(i.e., your protection level <strong>has met</strong> the baseline of 60%)</em><br>
-                <strong>Please remain vigilant and review your resources and overheads regularly to ensure you remain well-protected</strong>`;
-                scoreClass = 'score-moderate';
-            } else {
-                const excessPercent = Math.round((finalScore - 60));
-                levelText = 'Well-protected';
-                message = `Congratulations! You are currently <strong>well-protected</strong> as your resources are much higher than your overheads<br>
-                <em>(i.e., your protection level <strong>has exceeded</strong> the baseline of 60% by ${excessPercent}%)</em><br>
-                <strong>Please remain vigilant and review your resources and overheads regularly to ensure you remain well-protected</strong>`;
-                scoreClass = 'score-well';
-            }
-
-            scoreElement.classList.add(scoreClass);
-            levelElement.textContent = levelText;
-            messageElement.innerHTML = message;
-            resultSection.style.display = 'block';
-            resultSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        // Show/hide functionality for checkboxes
+        document.getElementById('specialNeedsChildren').addEventListener('change', function() {
+            document.getElementById('specialNeedsAges').classList.toggle('hidden', !this.checked);
+        });
+        
+        document.getElementById('rentingProperty').addEventListener('change', function() {
+            document.getElementById('annualRent').classList.toggle('hidden', !this.checked);
+        });
     </script>
 </body>
 </html>
