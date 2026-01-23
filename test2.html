@@ -3,195 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIA Protection Gap Calculator - Coverage Clarity Assessment™</title>
+    <title>LIA Singapore Protection Gap Calculator</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 2rem; 
-            line-height: 1.6; 
-            background: #f8fafc;
-            color: #1e293b;
+            max-width: 900px; margin: 0 auto; padding: 2rem; 
+            line-height: 1.6; background: #f8fafc; color: #1e293b;
         }
-        .header { 
-            text-align: center; 
-            margin-bottom: 3rem; 
-            color: #1e40af;
-        }
-        .header h1 { 
-            font-size: 2.5rem; 
-            margin-bottom: 0.5rem; 
-        }
+        .header { text-align: center; margin-bottom: 3rem; color: #1e40af; }
+        .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .intro { 
-            background: white; 
-            padding: 2.5rem; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            margin-bottom: 2rem;
+            background: white; padding: 2.5rem; border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;
             border-left: 5px solid #1e40af;
         }
-        .intro h2 { 
-            color: #dc2626; 
-            font-size: 1.5rem; 
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .intro h2 { color: #dc2626; font-size: 1.5rem; margin-bottom: 1rem; }
+        .section { 
+            background: white; padding: 2rem; border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;
         }
-        .intro strong { color: #1e40af; }
         .input-group { 
-            margin-bottom: 1.5rem; 
-            padding: 1.5rem; 
-            background: #f1f5f9; 
-            border-radius: 8px; 
-            border-left: 4px solid #3b82f6;
+            margin-bottom: 1.5rem; padding: 1.5rem; 
+            background: #f1f5f9; border-radius: 8px; border-left: 4px solid #3b82f6;
         }
-        .input-group h3 { 
-            color: #1e40af; 
-            margin-bottom: 1rem; 
-            font-size: 1.1rem;
-        }
+        .input-group h3 { color: #1e40af; margin-bottom: 1rem; font-size: 1.1rem; }
         .input-row { display: flex; gap: 1rem; align-items: end; flex-wrap: wrap; }
         input[type="number"], select { 
-            padding: 0.75rem; 
-            border: 2px solid #e2e8f0; 
-            border-radius: 8px; 
-            font-size: 1rem;
-            min-width: 120px;
+            padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; 
+            font-size: 1rem; min-width: 140px;
         }
         input[type="number"]:focus, select:focus { 
-            outline: none; 
-            border-color: #3b82f6; 
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-        }
-        .question-section { 
-            background: white; 
-            padding: 2rem; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            margin-bottom: 2rem;
-        }
-        .radio-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-        input[type="radio"] { margin-right: 0.5rem; transform: scale(1.2); }
-        label { 
-            display: flex; 
-            align-items: center; 
-            padding: 0.75rem 1.25rem; 
-            background: white; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            transition: all 0.2s;
-            border: 2px solid transparent;
-            font-weight: 500;
-        }
-        input[type="radio"]:checked + label { 
-            background: #dbeafe; 
-            border-color: #3b82f6; 
+            outline: none; border-color: #3b82f6; 
             box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
         }
         .score-display { 
-            font-size: 4rem; 
-            font-weight: 800; 
-            text-align: center; 
-            margin: 2rem 0;
+            font-size: 4rem; font-weight: 800; text-align: center; margin: 2rem 0;
+            padding: 2rem; border-radius: 12px;
         }
         .score-gap { color: #dc2626; background: #fef2f2; }
         .score-moderate { color: #ca8a04; background: #fef3c7; }
         .score-well { color: #16a34a; background: #f0fdf4; }
-        .protection-level { 
-            font-size: 1.8rem; 
-            text-align: center; 
-            margin: 1rem 0;
-            font-weight: 700;
-        }
-        .cta { 
-            display: block;
-            text-align: center; 
-            padding: 1.5rem 2rem; 
-            background: linear-gradient(135deg, #1e40af, #3b82f6); 
-            color: white; 
-            border-radius: 12px; 
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 2rem;
-            transition: all 0.3s;
-        }
-        .cta:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 35px rgba(30,64,175,0.4); 
-        }
+        .protection-level { font-size: 1.8rem; text-align: center; margin: 1rem 0; font-weight: 700; }
+        .gap-amount { font-size: 1.5rem; text-align: center; color: #dc2626; font-weight: 600; }
         button { 
-            padding: 1.25rem 3rem; 
-            font-size: 1.2rem; 
-            background: #10b981; 
-            color: white; 
-            border: none; 
-            border-radius: 12px; 
-            cursor: pointer;
-            font-weight: 700;
-            display: block;
-            margin: 2rem auto;
+            padding: 1.25rem 3rem; font-size: 1.2rem; background: #10b981; 
+            color: white; border: none; border-radius: 12px; cursor: pointer;
+            font-weight: 700; display: block; margin: 2rem auto;
         }
         button:hover { background: #059669; transform: translateY(-2px); }
+        .cta { 
+            display: block; text-align: center; padding: 1.5rem 2rem; 
+            background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; 
+            border-radius: 12px; text-decoration: none; font-weight: 700; 
+            font-size: 1.1rem; margin-top: 2rem;
+        }
+        .cta:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(30,64,175,0.4); }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🛡️ Coverage Clarity Assessment™</h1>
-        <p><strong>Powered by LIA Protection Gap methodology — See if you're Well Protected, Moderately Protected, or Facing a Gap</strong></p>
+        <h1>🛡️ LIA Protection Gap Calculator</h1>
+        <p><strong>The industry gold standard — Complete LIA Singapore assessment</strong></p>
     </div>
 
-    <!-- Intro Copy (Havend Style) -->
     <div class="intro">
         <h2>No Mis-selling. No Over-selling. No Pressure-selling.</h2>
-        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
-            <em>(We might sound like a broken record, but it's because you deserve better.)</em>
-        </p>
-        <p style="margin-bottom: 1rem;">
-            You're not here for a sales pitch. You just want to be <strong>sure</strong> your insurance works for you — not against you.
-        </p>
-        <p style="margin-bottom: 1.5rem;">
-            <strong>Too many people buy coverage they don't understand.</strong> Premiums drain month after month, but when claims come… the fine print disappoints.
-        </p>
-        <p style="margin-bottom: 2rem;">
-            <strong>Our promise:</strong> Honest clarity using LIA Singapore's proven Protection Gap methodology. No product pushing. Just the truth about your coverage.
-        </p>
+        <p><strong>LIA Singapore's calculator</strong> is the authoritative benchmark. It reveals if your <strong>Resources</strong> (coverage + savings) exceed your <strong>Overheads</strong> (debts + expenses).</p>
+        <p><em>60% baseline = industry standard for adequate protection.</em></p>
     </div>
 
-    <form id="protectionGapTest">
-        <!-- Personal Details (LIA Style) -->
-        <div class="question-section">
-            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">About You</h2>
+    <form id="liaCalculator">
+        <!-- SECTION 1: Personal Profile -->
+        <div class="section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">1. Personal Profile</h2>
             
             <div class="input-group">
-                <h3>Your Age</h3>
-                <input type="number" id="age" min="20" max="80" value="35" placeholder="e.g. 35">
+                <h3>Age</h3>
+                <input type="number" id="age" min="18" max="80" value="35">
             </div>
 
             <div class="input-group">
-                <h3>Annual Household Income (S$)</h3>
-                <input type="number" id="income" min="0" value="120000" placeholder="e.g. 120,000">
-            </div>
-
-            <div class="input-group">
-                <h3>Current Insurance Coverage (S$)</h3>
+                <h3>Gender</h3>
                 <div class="input-row">
-                    <div>
-                        <label>Death/TPD:</label>
-                        <input type="number" id="deathCoverage" min="0" value="300000" placeholder="e.g. 300,000">
-                    </div>
-                    <div>
-                        <label>Critical Illness:</label>
-                        <input type="number" id="ciCoverage" min="0" value="200000" placeholder="e.g. 200,000">
-                    </div>
+                    <label><input type="radio" name="gender" value="male" checked> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
                 </div>
+            </div>
+
+            <div class="input-group">
+                <h3>Smoker Status</h3>
+                <div class="input-row">
+                    <label><input type="radio" name="smoker" value="no" checked> Non-Smoker</label>
+                    <label><input type="radio" name="smoker" value="yes"> Smoker</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <h3>Marital Status</h3>
+                <select id="marital">
+                    <option value="single">Single</option>
+                    <option value="married" selected>Married</option>
+                    <option value="divorced">Divorced</option>
+                </select>
             </div>
         </div>
 
-        <!-- Protection Needs Assessment -->
-        <div class="question-section">
-            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Your Protection Needs</h2>
+        <!-- SECTION 2: Family & Dependants -->
+        <div class="section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">2. Family & Dependants</h2>
             
             <div class="input-group">
                 <h3>Number of Dependants</h3>
@@ -200,129 +120,157 @@
                     <option value="1">1</option>
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
-                    <option value="4+">4+</option>
+                    <option value="4">4+</option>
                 </select>
             </div>
 
             <div class="input-group">
-                <h3>Outstanding Debts (Loans + Mortgage) (S$)</h3>
-                <input type="number" id="debts" min="0" value="200000" placeholder="e.g. 200,000">
-            </div>
-
-            <div class="input-group">
-                <h3>Annual Household Expenses (S$)</h3>
-                <input type="number" id="expenses" min="0" value="60000" placeholder="e.g. 60,000">
+                <h3>Children Under 21</h3>
+                <input type="number" id="children" min="0" max="10" value="1">
             </div>
         </div>
 
-        <!-- Lifestyle & Coverage Questions -->
-        <div class="question-section">
-            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Lifestyle & Coverage Check</h2>
+        <!-- SECTION 3: Income & Expenses -->
+        <div class="section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">3. Income & Expenses (S$)</h2>
             
             <div class="input-group">
-                <h3>Marital Status</h3>
-                <div class="radio-group">
-                    <input type="radio" name="marital" value="married" id="married" checked>
-                    <label for="married">Married</label>
-                    <input type="radio" name="marital" value="single" id="single">
-                    <label for="single">Single</label>
-                </div>
+                <h3>Annual Household Income</h3>
+                <input type="number" id="income" value="120000">
             </div>
 
             <div class="input-group">
-                <h3>Has coverage been reviewed in last 12 months?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="reviewed" value="yes" id="reviewed-yes">
-                    <label for="reviewed-yes">✅ Yes</label>
-                    <input type="radio" name="reviewed" value="no" id="reviewed-no" checked>
-                    <label for="reviewed-no">❌ No</label>
-                </div>
+                <h3>Annual Household Expenses</h3>
+                <input type="number" id="expenses" value="60000">
             </div>
 
             <div class="input-group">
-                <h3>Total annual premiums as % of income?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="premiumRatio" value="low" id="low" checked>
-                    <label for="low">✅ <2% (Efficient)</label>
-                    <input type="radio" name="premiumRatio" value="high" id="high">
-                    <label for="high">❌ >2% (Review needed)</label>
-                </div>
+                <h3>Monthly Education Expenses per Child</h3>
+                <input type="number" id="education" value="1200">
             </div>
         </div>
 
-        <button type="button" onclick="calculateLiaScore()">🧮 Calculate My Protection Level</button>
+        <!-- SECTION 4: Liabilities -->
+        <div class="section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">4. Liabilities (S$)</h2>
+            
+            <div class="input-group">
+                <h3>Outstanding Home Loan</h3>
+                <input type="number" id="homeloan" value="300000">
+            </div>
+
+            <div class="input-group">
+                <h3>Other Loans (Car/Student/Personal)</h3>
+                <input type="number" id="otherloans" value="50000">
+            </div>
+        </div>
+
+        <!-- SECTION 5: Existing Coverage -->
+        <div class="section">
+            <h2 style="color: #1e40af; margin-bottom: 1.5rem;">5. Existing Coverage (S$)</h2>
+            
+            <div class="input-row" style="gap: 2rem;">
+                <div class="input-group">
+                    <h3>Death/TPD</h3>
+                    <input type="number" id="death" value="500000">
+                </div>
+                <div class="input-group">
+                    <h3>Critical Illness</h3>
+                    <input type="number" id="ci" value="200000">
+                </div>
+            </div>
+
+            <div class="input-row" style="gap: 2rem;">
+                <div class="input-group">
+                    <h3>Hospitalisation</h3>
+                    <input type="number" id="hospital" value="100000">
+                </div>
+                <div class="input-group">
+                    <h3>Disability Income</h3>
+                    <input type="number" id="disability" value="0">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <h3>Liquidiable Assets (Cash + Investments)</h3>
+                <input type="number" id="assets" value="100000">
+            </div>
+        </div>
+
+        <button type="button" onclick="calculateFullLiaScore()">🧮 Calculate LIA Protection Score</button>
     </form>
 
-    <div id="scoreResult" style="display: none;" class="question-section">
+    <div id="scoreResult" style="display: none;" class="section">
         <div class="score-display" id="scoreNumber"></div>
         <div class="protection-level" id="protectionLevel"></div>
-        <div id="scoreMessage" style="text-align: center; font-size: 1.3rem; margin: 1.5rem 0; padding: 1.5rem; border-radius: 8px;"></div>
-        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">
-            <strong>Want your personalized LIA-style gap analysis?</strong>
-        </p>
-        <a href="https://havend.com/#contact" class="cta">
-            📋 Get Your Free Detailed Protection Review →
-        </a>
+        <div class="gap-amount" id="gapAmount"></div>
+        <div id="scoreMessage"></div>
+        <a href="https://havend.com/#contact" class="cta">📋 Get Your Personalized Gap Analysis</a>
     </div>
 
     <script>
-        function calculateLiaScore() {
-            // Get form values
+        function calculateFullLiaScore() {
+            // LIA Complete Calculator - All inputs
             const age = parseInt(document.getElementById('age').value) || 35;
             const income = parseInt(document.getElementById('income').value) || 120000;
-            const deathCoverage = parseInt(document.getElementById('deathCoverage').value) || 300000;
-            const ciCoverage = parseInt(document.getElementById('ciCoverage').value) || 200000;
-            const dependants = parseInt(document.getElementById('dependants').value) || 2;
-            const debts = parseInt(document.getElementById('debts').value) || 200000;
             const expenses = parseInt(document.getElementById('expenses').value) || 60000;
-            
-            const formData = new FormData(document.getElementById('protectionGapTest'));
-            const marital = formData.get('marital') === 'married' ? 1 : 0;
-            const reviewed = formData.get('reviewed') === 'yes' ? 1 : 0;
-            const premiumRatio = formData.get('premiumRatio') === 'low' ? 1 : 0;
+            const education = parseInt(document.getElementById('education').value) || 1200;
+            const homeloan = parseInt(document.getElementById('homeloan').value) || 300000;
+            const otherloans = parseInt(document.getElementById('otherloans').value) || 50000;
+            const death = parseInt(document.getElementById('death').value) || 500000;
+            const ci = parseInt(document.getElementById('ci').value) || 200000;
+            const hospital = parseInt(document.getElementById('hospital').value) || 100000;
+            const disability = parseInt(document.getElementById('disability').value) || 0;
+            const assets = parseInt(document.getElementById('assets').value) || 100000;
+            const dependants = parseInt(document.getElementById('dependants').value) || 2;
+            const children = parseInt(document.getElementById('children').value) || 1;
 
-            // LIA-style calculation: Resources vs Overheads
-            const protectionNeeds = debts + (expenses * 10) + (income * dependants * 0.6); // Simplified LIA formula
-            const resourcesAvailable = deathCoverage + ciCoverage + (income * 0.3); // Existing coverage + buffer
-            
-            const protectionRatio = Math.min(100, (resourcesAvailable / protectionNeeds) * 100);
-            
-            // Additional factors (LIA-style)
-            const ageFactor = Math.max(0, 100 - (age - 30) * 2); // Age penalty
-            const reviewFactor = reviewed * 15;
-            const premiumFactor = premiumRatio * 10;
-            
-            const finalScore = Math.round((protectionRatio * 0.7 + ageFactor * 0.1 + reviewFactor + premiumFactor) / 1.8);
+            // LIA Formula: Total Overheads
+            const totalOverheads = homeloan + otherloans + 
+                                 (expenses * 10) + // 10 years living expenses
+                                 (education * 12 * 16 * children) + // 16 years education
+                                 (income * 0.5 * dependants); // Income replacement
 
-            // Display LIA-style results
+            // LIA Formula: Total Resources  
+            const totalResources = death + ci + hospital + disability + assets;
+
+            // Protection Ratio (LIA's core metric)
+            const protectionRatio = Math.min(100, (totalResources / totalOverheads) * 100);
+            
+            // Final score with age adjustment (LIA methodology)
+            const ageAdjustment = Math.max(50, 100 - (age - 30) * 1.5);
+            const finalScore = Math.round(protectionRatio * 0.8 + ageAdjustment * 0.2);
+
+            // LIA Results Display
             const scoreElement = document.getElementById('scoreNumber');
             const levelElement = document.getElementById('protectionLevel');
+            const gapElement = document.getElementById('gapAmount');
             const messageElement = document.getElementById('scoreMessage');
             const resultSection = document.getElementById('scoreResult');
 
             scoreElement.textContent = finalScore + '%';
             scoreElement.className = 'score-display';
 
-            let levelText = '';
-            let message = '';
-            let scoreClass = '';
+            let levelText = '', message = '', gapText = '', scoreClass = '';
 
             if (finalScore < 60) {
                 levelText = 'Facing a Protection Gap';
-                message = 'Please note that you are currently facing a protection gap as the value of your resources is lower than your overheads.<br><strong>Your protection level is below the baseline of 60%</strong><br>Please take action today to narrow your protection gap.';
+                message = 'Please note that you are currently facing a protection gap as the value of your resources is lower than your overheads (i.e., your protection level <strong>is below</strong> the baseline of 60%).<br><strong>Please take the necessary actions today to narrow your protection gap.</strong>';
+                gapText = `Gap: S$ ${(totalOverheads - totalResources)/1000000}M`;
                 scoreClass = 'score-gap';
-            } else if (finalScore < 75) {
+            } else if (finalScore < 80) {
                 levelText = 'Moderately Protected';
-                message = 'Well done! You are currently moderately protected as your resources are higher than your overheads.<br><strong>Your protection level has met the baseline of 60%</strong><br>Please remain vigilant and review regularly.';
+                message = 'Well done! You are currently moderately protected as your resources are higher than your overheads (i.e., your protection level <strong>has met</strong> the baseline of 60%).<br><strong>Please remain vigilant and review your resources and overheads regularly.</strong>';
                 scoreClass = 'score-moderate';
             } else {
                 levelText = 'Well Protected';
-                message = `Congratulations! You are currently well-protected as your resources are much higher than your overheads.<br><strong>Your protection level has exceeded the baseline of 60% by ${Math.round((finalScore-60)/5)}%</strong><br>Please remain vigilant and review regularly.`;
+                message = `Congratulations! You are currently well-protected as your resources are much higher than your overheads (i.e., your protection level <strong>has exceeded</strong> the baseline of 60% by ${(finalScore-60).toFixed(0)}%).<br><strong>Please remain vigilant and review regularly.</strong>`;
                 scoreClass = 'score-well';
             }
 
             scoreElement.classList.add(scoreClass);
             levelElement.textContent = levelText;
+            gapElement.textContent = gapText;
             messageElement.innerHTML = message;
             resultSection.style.display = 'block';
             resultSection.scrollIntoView({ behavior: 'smooth' });
