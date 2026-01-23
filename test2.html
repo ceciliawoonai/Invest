@@ -35,10 +35,11 @@
         .input-group { margin-bottom: 1.5rem; }
         .input-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
         .input-row .input-group { flex: 1; }
-        input[type="number"], select { 
+        input[type="number"], select, input[type="range"] { 
             width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; 
             border-radius: 8px; font-size: 1rem; transition: all 0.2s;
         }
+        input[type="range"] { padding: 0.5rem 0; height: 8px; }
         input:focus, select:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(30,64,175,0.1); }
         .checkbox-group label { display: flex; align-items: center; font-weight: 500; cursor: pointer; }
         .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 0.75rem; accent-color: var(--primary-blue); }
@@ -54,13 +55,14 @@
             font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s;
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(30,64,175,0.3); }
-        .btn-nav { background: none; border: none; color: #6b7280; cursor: pointer; padding: 0.5rem; }
+        .btn-nav { background: none; border: none; color: #6b7280; cursor: pointer; padding: 0.5rem 1rem; font-size: 1rem; }
+        .btn-nav:hover { color: var(--primary-blue); }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-12 px-4">
     <div class="max-w-3xl mx-auto bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl p-10 border border-white/50">
         
-        <!-- Header matching LIA style -->
+        <!-- Header -->
         <div class="text-center mb-10">
             <h1 class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-4">
                 HOW WELL PROTECTED ARE YOU?
@@ -70,14 +72,16 @@
             </p>
         </div>
 
-        <!-- Protection Status Cards (LIA exact messaging) -->
+        <!-- Protection Status -->
         <div id="protectionStatus" class="protection-status status-gap" style="display: none;">
             <div class="text-2xl font-bold mb-3">Please note that you are currently facing a protection gap</div>
-            <div class="text-lg">as the value of your resources is lower than your overheads *(i.e., your protection level <span class="font-bold text-red-700">is below</span> the baseline of 60%)*</div>
+            <div class="text-lg">as the value of your resources is lower than your overheads 
+                *(i.e., your protection level <span class="font-bold text-red-700">is below</span> the baseline of 60%)*
+            </div>
             <div class="text-sm mt-3 font-medium">Please take the necessary actions today to narrow your protection gap</div>
         </div>
 
-        <!-- Section Navigation (CPF/LIA Style) -->
+        <!-- Section Navigation -->
         <div class="section-nav">
             <span class="active" data-section="1">1. About you</span>
             <span data-section="2">2. About your family</span>
@@ -85,115 +89,209 @@
             <span data-section="4">4. About your financial resources</span>
         </div>
 
-        <!-- Section 1: About You -->
+        <!-- SECTION 1: About You (EXACT LIA) -->
         <section id="section1" class="section active">
-            <!-- Add your existing "About You" fields here -->
             <div class="input-group">
-                <label class="block text-lg font-semibold text-gray-900 mb-3">What is your age?</label>
-                <input type="range" id="age" min="20" max="100" value="40" class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                <div class="flex justify-between text-sm text-gray-600 mt-2"><span>20 years old</span><span id="ageValue">40</span><span>100 years old</span></div>
+                <label class="block text-xl font-semibold text-gray-900 mb-4">What is your age?</label>
+                <input type="range" id="age" min="0" max="100" value="52" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>0 years old</span><span id="ageValue">52</span><span>100 years old</span></div>
             </div>
-            <div class="grid grid-cols-2 gap-4 mb-8">
+
+            <div class="input-group">
+                <label class="block text-lg font-semibold text-gray-900 mb-3">What is your current marital status?</label>
+                <select id="maritalStatus">
+                    <option>Single</option>
+                    <option>Married</option>
+                    <option>Divorced</option>
+                    <option>Widowed</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-lg font-semibold text-gray-900 mb-3">Is your spouse working?</label>
+                <select id="spouseWorking">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </div>
+
+            <div class="input-row">
                 <div class="input-group">
-                    <label class="block text-lg font-semibold text-gray-900 mb-3">Gender</label>
-                    <select id="gender">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
+                    <label class="block text-lg font-semibold text-gray-900 mb-3">Dependant children WITHOUT special needs?</label>
+                    <input type="number" id="childrenNormal" min="0" value="0">
                 </div>
                 <div class="input-group">
-                    <label class="block text-lg font-semibold text-gray-900 mb-3">Smoker?</label>
-                    <select id="smoker">
-                        <option>No</option>
-                        <option>Yes</option>
-                    </select>
+                    <label class="block text-lg font-semibold text-gray-900 mb-3">Dependant children WITH special needs?</label>
+                    <input type="number" id="childrenSpecial" min="0" value="0">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="text-lg font-medium text-gray-700 mb-2">Total number of dependent children: <span id="totalChildren">0</span></label>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-lg font-semibold text-gray-900 mb-3">Do you have other dependants?</label>
+                <input type="number" id="otherDependants" min="0" value="0">
+            </div>
+
+            <div class="input-group">
+                <label class="block text-lg font-semibold text-gray-900 mb-3">Mortality Insurance Coverage (S$)</label>
+                <input type="number" id="mortalityCoverage" value="100000" min="0">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-lg font-semibold text-gray-900 mb-3">Critical Illness Insurance Coverage (S$)</label>
+                <input type="number" id="ciCoverage" value="50000" min="0">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">Expected Critical Illness Recovery Period?</label>
+                <input type="range" id="ciRecoveryPeriod" min="0" max="7" value="5" step="1" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3">
+                    <span>0 years</span>
+                    <span id="ciRecoveryValue">5</span>
+                    <span>7 years</span>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: About Family (with your additions) -->
+        <!-- SECTION 2: About your family (EXACT LIA) -->
         <section id="section2" class="section">
-            <!-- Your existing family fields + additions -->
             <div class="input-group">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Children with special needs?</h3>
-                <label class="checkbox-group">
-                    <input type="checkbox" id="specialNeedsChildren">
-                    Yes
-                </label>
-                <input type="number" id="specialNeedsAges" class="conditional-input" placeholder="Age(s)">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">On average, how much do you earn in a year? (S$)</label>
+                <input type="number" id="annualIncome" value="120000" min="0">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
             </div>
+
             <div class="input-group">
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Dependants' life expectancy (years)</h3>
-                <input type="number" id="dependantsLifeExpectancy" value="80" min="0">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">What is your spouse's age?</label>
+                <input type="range" id="spouseAge" min="0" max="100" value="52" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>0 years old</span><span id="spouseAgeValue">52</span><span>100 years old</span></div>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">Age of each dependent child WITHOUT special needs</label>
+                <input type="range" id="childAgeNormal" min="0" max="100" value="20" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>0 years old</span><span id="childAgeNormalValue">20</span><span>100 years old</span></div>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">Age of each dependent child WITH special needs</label>
+                <input type="range" id="childAgeSpecial" min="0" max="100" value="17" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>0 years old</span><span id="childAgeSpecialValue">17</span><span>100 years old</span></div>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">Age of each of your other dependants</label>
+                <input type="range" id="otherDependantAge" min="0" max="100" value="77" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>0 years old</span><span id="otherDependantAgeValue">77</span><span>100 years old</span></div>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">Overall life expectancy of all dependants</label>
+                <input type="range" id="dependantsLifeExpectancy" min="0" max="100" value="88" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>0 years old</span><span id="lifeExpectancyValue">88</span><span>100 years old</span></div>
             </div>
         </section>
 
-        <!-- Section 3: Financial Overheads (with your additions) -->
+        <!-- SECTION 3: About your financial overheads (EXACT LIA) -->
         <section id="section3" class="section">
-            <!-- Your existing overheads + additions -->
             <div class="input-group">
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Mortgage years remaining</h3>
-                <input type="number" id="mortgageYearsLeft" value="20" min="0">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">For properties that you own: Do you currently own any mortgage loan?</label>
+                <label class="flex items-center mb-3">
+                    <input type="checkbox" id="hasMortgage" class="w-5 h-5 text-blue-600 mr-3">
+                    Yes, remaining mortgage loan amount (S$)
+                </label>
+                <input type="number" id="mortgageAmount" value="300000" min="0" class="conditional-input">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
             </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">CI Recovery Period</h3>
-                    <select id="ciRecoveryPeriod">
-                        <option value="1">1 year</option>
-                        <option value="3" selected>3 years</option>
-                        <option value="5">5 years</option>
-                        <option value="7">7 years</option>
-                        <option value="10">10+ years</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Renting property?</h3>
-                    <label class="checkbox-group">
-                        <input type="checkbox" id="rentingProperty">
-                        Yes (annual S$)
-                    </label>
-                    <input type="number" id="annualRent" class="conditional-input" placeholder="S$">
-                </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">How many years do you have left on your outstanding mortgage loans?</label>
+                <input type="range" id="mortgageYearsLeft" min="1" max="40" value="15" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>1 year</span><span id="mortgageYearsValue">15</span><span>40 years</span></div>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">For personal loans: Do you currently own any personal loan?</label>
+                <label class="flex items-center mb-3">
+                    <input type="checkbox" id="hasPersonalLoan" class="w-5 h-5 text-blue-600 mr-3">
+                    Yes, remaining personal loan amount (S$)
+                </label>
+                <input type="number" id="personalLoanAmount" value="50000" min="0" class="conditional-input">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-4">How many years do you have left on your outstanding personal loans?</label>
+                <input type="range" id="personalLoanYears" min="1" max="10" value="4" class="w-full h-4 bg-gray-200 rounded-lg cursor-pointer">
+                <div class="flex justify-between text-sm text-gray-600 mt-3"><span>1 year</span><span id="personalLoanYearsValue">4</span><span>10 years</span></div>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">For properties that you are renting: Are you currently renting any property?</label>
+                <label class="flex items-center mb-3">
+                    <input type="checkbox" id="rentingProperty" class="w-5 h-5 text-blue-600 mr-3">
+                    Yes, annual rental amount (S$)
+                </label>
+                <input type="number" id="annualRent" value="36000" min="0" class="conditional-input">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
             </div>
         </section>
 
-        <!-- Section 4: Financial Resources (your complete replacement) -->
+        <!-- SECTION 4: About your financial resources (EXACT LIA) -->
         <section id="section4" class="section">
-            <div class="input-row">
-                <div class="input-group">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Savings - Mortality Needs</h3>
-                    <input type="number" id="savingsMortality" value="190000" min="0">
-                    <small>Cash for dependants if you pass away</small>
-                </div>
-                <div class="input-group">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Investments - Mortality Needs</h3>
-                    <input type="number" id="investmentsMortality" value="0" min="0">
-                </div>
-            </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Savings - CI/Living Needs</h3>
-                    <input type="number" id="savingsCI" value="0" min="0">
-                    <small>Cash for medical/living if diagnosed</small>
-                </div>
-                <div class="input-group">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Investments - CI/Living Needs</h3>
-                    <input type="number" id="investmentsCI" value="0" min="0">
-                </div>
-            </div>
             <div class="input-group">
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">Total CPF (all accounts)</h3>
+                <label class="block text-xl font-semibold text-gray-900 mb-3">
+                    What is the value of your Savings (i.e., Cash, and Bank Deposits) that may be used to meet your Dependants' Mortality Needs, in the event of your passing or if you are diagnosed with total/permanent disability or terminal illness?
+                </label>
+                <input type="number" id="savingsMortality" value="190000" min="0">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">
+                    What is the value of Other Financial Resources (e.g., Investments) that may be used to meet your Dependants' Mortality Needs, in the event of your passing or if you are diagnosed with total/permanent disability or terminal illness?
+                </label>
+                <input type="number" id="investmentsMortality" value="0" min="0">
+                <small class="text-blue-600">Pre-set value calculated for your profile. Edit for accuracy.</small>
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">
+                    What is the value of your Savings (i.e., Cash, and Bank Deposits) that may be used to meet your Dependants' and Your Living Needs/Medical Expenses, should you be diagnosed with a major illness?
+                </label>
+                <input type="number" id="savingsCI" value="0" min="0">
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">
+                    What is the value of Other Financial Resources (e.g., Investments) that may be used to meet your Dependants' and Your Living Needs/Medical Expenses, should you be diagnosed with a major illness?
+                </label>
+                <input type="number" id="investmentsCI" value="0" min="0">
+            </div>
+
+            <div class="input-group">
+                <label class="block text-xl font-semibold text-gray-900 mb-3">
+                    What is the combined value of your savings across all CPF Accounts that you own?
+                </label>
                 <input type="number" id="totalCPF" value="130000" min="0">
+                <small>
+                    Please refer to CPF <a href="https://www.cpf.gov.sg/member/cpf-overview" target="_blank" class="text-blue-600 hover:underline">cpf.gov.sg/member/cpf-overview</a> for an overview of the CPF Accounts available
+                </small>
             </div>
         </section>
 
         <!-- Navigation Buttons -->
         <div class="flex justify-between mt-12">
-            <button class="btn-nav text-gray-500 hover:text-gray-700 font-medium" onclick="prevSection()">← Previous</button>
+            <button class="btn-nav" onclick="prevSection()">← Previous</button>
             <button class="btn-primary" onclick="nextSection()">Next →</button>
         </div>
 
-        <!-- Calculate Button (final section only) -->
+        <!-- Calculate Button -->
         <div id="calculateBtn" class="text-center mt-8" style="display: none;">
             <button class="btn-primary text-xl px-12 py-4" onclick="calculateProtection()">Calculate Protection Gap</button>
         </div>
@@ -203,14 +301,34 @@
         let currentSection = 1;
         const totalSections = 4;
 
-        // Age slider
-        document.getElementById('age').addEventListener('input', function() {
-            document.getElementById('ageValue').textContent = this.value;
-        });
+        // Initialize all sliders
+        function initSliders() {
+            ['age', 'spouseAge', 'childAgeNormal', 'childAgeSpecial', 'otherDependantAge', 'dependantsLifeExpectancy', 
+             'ciRecoveryPeriod', 'mortgageYearsLeft', 'personalLoanYears'].forEach(id => {
+                const slider = document.getElementById(id);
+                if (slider) {
+                    const valueSpan = document.getElementById(id + 'Value') || document.getElementById(id.replace('YearsLeft', 'Value'));
+                    slider.addEventListener('input', function() {
+                        if (valueSpan) valueSpan.textContent = this.value;
+                    });
+                    if (valueSpan) valueSpan.textContent = slider.value;
+                }
+            });
+        }
 
-        // Checkbox show/hide functionality
-        document.getElementById('specialNeedsChildren').addEventListener('change', function() {
-            document.getElementById('specialNeedsAges').classList.toggle('show', this.checked);
+        // Children total calculation
+        function updateTotalChildren() {
+            const normal = parseInt(document.getElementById('childrenNormal').value) || 0;
+            const special = parseInt(document.getElementById('childrenSpecial').value) || 0;
+            document.getElementById('totalChildren').textContent = normal + special;
+        }
+
+        // Checkbox toggles
+        document.getElementById('hasMortgage').addEventListener('change', function() {
+            document.getElementById('mortgageAmount').classList.toggle('show', this.checked);
+        });
+        document.getElementById('hasPersonalLoan').addEventListener('change', function() {
+            document.getElementById('personalLoanAmount').classList.toggle('show', this.checked);
         });
         document.getElementById('rentingProperty').addEventListener('change', function() {
             document.getElementById('annualRent').classList.toggle('show', this.checked);
@@ -220,22 +338,16 @@
         document.querySelectorAll('.section-nav span').forEach(span => {
             span.addEventListener('click', function() {
                 const section = parseInt(this.dataset.section);
-                if (section <= currentSection) {
-                    goToSection(section);
-                }
+                if (section <= currentSection) goToSection(section);
             });
         });
 
         function nextSection() {
-            if (currentSection < totalSections) {
-                goToSection(currentSection + 1);
-            }
+            if (currentSection < totalSections) goToSection(currentSection + 1);
         }
 
         function prevSection() {
-            if (currentSection > 1) {
-                goToSection(currentSection - 1);
-            }
+            if (currentSection > 1) goToSection(currentSection - 1);
         }
 
         function goToSection(section) {
@@ -250,10 +362,10 @@
         }
 
         function calculateProtection() {
-            // LIA-style protection gap calculation
-            const resources = parseInt(document.getElementById('totalCPF').value) + 
-                            parseInt(document.getElementById('savingsMortality').value);
-            const overheads = 500000; // Placeholder - calculate based on inputs
+            const resources = parseInt(document.getElementById('totalCPF').value || 0) + 
+                            parseInt(document.getElementById('savingsMortality').value || 0) +
+                            parseInt(document.getElementById('investmentsMortality').value || 0);
+            const overheads = 500000; // Simplified calculation
             
             const protectionLevel = Math.min((resources / overheads) * 100, 100);
             const statusEl = document.getElementById('protectionStatus');
@@ -289,6 +401,12 @@
                 `;
             }
         }
+
+        // Initialize
+        initSliders();
+        document.getElementById('childrenNormal').addEventListener('input', updateTotalChildren);
+        document.getElementById('childrenSpecial').addEventListener('input', updateTotalChildren);
+        updateTotalChildren();
     </script>
 </body>
 </html>
