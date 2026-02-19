@@ -3,66 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DBS Life Planner | Customized Insurance Report</title>
+    <title>Prudential Singapore | Family Insurance Report</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Inter', sans-serif; 
-            background: #f5f7fa;
-            color: #1a1f36;
+            background: #f8fafc;
+            color: #1e293b;
             line-height: 1.6;
         }
         
-        /* DBS Red Color Scheme */
+        /* Prudential Singapore Brand Colors */
         :root {
-            --dbs-red: #d71920;
-            --dbs-red-dark: #b51017;
-            --dbs-grey: #4a5568;
-            --dbs-light-grey: #e2e8f0;
-            --dbs-white: #ffffff;
-            --dbs-blue: #2d3748;
+            --pru-red: #e31e24;        /* PMS 485C */
+            --pru-grey: #4b5e77;       /* PMS 431C */
+            --pru-light-grey: #f1f5f9;
+            --pru-white: #ffffff;
+            --pru-dark: #0f172a;
+            --pru-gold: #f59e0b;
         }
 
-        /* Login Screen - DBS Style */
+        /* Login Screen - Prudential Style */
         .login-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--pru-red) 0%, var(--pru-grey) 100%);
             padding: 20px;
         }
         .login-card {
-            background: var(--dbs-white);
+            background: var(--pru-white);
             padding: 50px 40px;
             border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            box-shadow: 0 25px 50px -12px rgba(227,30,36,0.3);
             width: 100%;
             max-width: 420px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .dbs-logo {
-            width: 60px;
-            height: 60px;
-            background: var(--dbs-red);
-            border-radius: 12px;
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--pru-red);
+        }
+        .pru-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pru-red) 0%, var(--pru-grey) 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
             font-weight: 700;
             color: white;
-            font-size: 20px;
+            font-size: 22px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        .pru-logo::after {
+            content: 'PRU';
+            position: absolute;
+            font-size: 10px;
+            bottom: -8px;
+            right: 8px;
+            color: rgba(255,255,255,0.8);
         }
         .login-title { 
             font-size: 28px; 
             font-weight: 700; 
-            color: var(--dbs-blue);
+            color: var(--pru-dark);
             margin-bottom: 8px;
         }
         .login-subtitle { 
-            color: var(--dbs-grey); 
+            color: var(--pru-grey); 
             font-size: 16px;
             margin-bottom: 32px;
         }
@@ -74,7 +95,7 @@
             display: block;
             font-size: 14px;
             font-weight: 500;
-            color: var(--dbs-grey);
+            color: var(--pru-grey);
             margin-bottom: 8px;
         }
         .input-field {
@@ -88,14 +109,14 @@
         }
         .input-field:focus {
             outline: none;
-            border-color: var(--dbs-red);
+            border-color: var(--pru-red);
             background: white;
-            box-shadow: 0 0 0 3px rgba(215,25,32,0.1);
+            box-shadow: 0 0 0 3px rgba(227,30,36,0.1);
         }
         .login-btn {
             width: 100%;
             padding: 18px;
-            background: var(--dbs-red);
+            background: linear-gradient(135deg, var(--pru-red) 0%, var(--pru-grey) 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -104,15 +125,29 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .login-btn:hover::before {
+            left: 100%;
         }
         .login-btn:hover {
-            background: var(--dbs-red-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(215,25,32,0.3);
+            box-shadow: 0 15px 35px rgba(227,30,36,0.4);
         }
         .demo-credentials {
             font-size: 13px;
-            color: var(--dbs-grey);
+            color: var(--pru-grey);
         }
 
         /* Report Screen */
@@ -124,319 +159,69 @@
             margin: 0 auto;
         }
         .header-section {
-            background: var(--dbs-white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            background: var(--pru-white);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             margin-bottom: 40px;
             text-align: center;
-            border-top: 8px solid var(--dbs-red);
+            border-top: 8px solid var(--pru-red);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--pru-red), var(--pru-gold), var(--pru-red));
+        }
+        .family-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 40px rgba(227,30,36,0.2);
+            margin: 0 auto 32px;
+            display: block;
         }
         .main-title {
-            font-size: 36px;
+            font-size: 40px;
             font-weight: 700;
-            color: var(--dbs-blue);
-            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--pru-red) 0%, var(--pru-grey) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
         }
         .subtitle-text {
-            font-size: 18px;
-            color: var(--dbs-grey);
+            font-size: 20px;
+            color: var(--pru-grey);
             max-width: 800px;
             margin: 0 auto;
+            font-weight: 400;
         }
         .profile-card {
-            background: linear-gradient(135deg, var(--dbs-red) 0%, var(--dbs-red-dark) 100%);
+            background: linear-gradient(135deg, var(--pru-red) 0%, var(--pru-grey) 100%);
             color: white;
-            padding: 24px 32px;
-            border-radius: 16px;
-            margin-bottom: 32px;
+            padding: 28px 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-        .profile-info h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .profile-info p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        .logout-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .logout-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        /* Content Sections */
-        .section {
-            background: var(--dbs-white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            margin-bottom: 32px;
-            border-left: 6px solid var(--dbs-red);
-        }
-        .section h2 {
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--dbs-blue);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-        }
-        .section h2::before {
-            content: "▸";
-            color: var(--dbs-red);
-            font-size: 24px;
-            margin-right: 12px;
-        }
-        .summary-point {
-            background: #fef7e0;
-            border: 2px solid #fde047;
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 24px;
-        }
-        .summary-point h3 {
-            font-size: 20px;
-            color: var(--dbs-red);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
-        /* Professional Tables */
-        .data-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: 16px;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin: 24px 0;
         }
-        .data-table thead th {
-            background: linear-gradient(135deg, var(--dbs-red) 0%, var(--dbs-red-dark) 100%);
-            color: white;
-            padding: 20px 24px;
-            font-weight: 600;
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .data-table td {
-            padding: 20px 24px;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 16px;
-        }
-        .data-table tr:hover {
-            background: #fff5f5;
-        }
-        .data-table tr:last-child td {
-            border-bottom: none;
-            font-weight: 500;
-            background: #fef7e0;
-        }
-
-        /* Notes Section */
-        .notes-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 32px;
-            margin-top: 32px;
-        }
-        .notes-title {
-            color: var(--dbs-red);
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        .actuarial-box {
-            background: white;
-            border-left: 5px solid var(--dbs-red);
-            padding: 24px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        @media (max-width: 768px) {
-            .login-card, .section, .header-section { padding: 24px; }
-            .main-title { font-size: 24px; }
-            .data-table { font-size: 14px; }
-            .data-table td, .data-table th { padding: 16px 12px; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-container">
-        <div class="login-card">
-            <div class="dbs-logo">DBS</div>
-            <h1 class="login-title">Life Planner Report</h1>
-            <p class="login-subtitle">Secure Access Required</p>
-            
-            <form id="loginForm">
-                <div class="input-group">
-                    <label class="input-label">Username</label>
-                    <input type="text" class="input-field" id="username" required>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Password</label>
-                    <input type="password" class="input-field" id="password" required>
-                </div>
-                <button type="submit" class="login-btn">Access Personal Report</button>
-            </form>
-            
-            <div class="demo-credentials">
-                Demo: <strong>user</strong> / <strong>pass123</strong>
-            </div>
-        </div>
-    </div>
-
-    <!-- Report Screen -->
-    <div id="reportScreen" class="report-wrapper">
-        <div class="profile-card">
-            <div class="profile-info">
-                <h3>Personalized Insurance Analysis</h3>
-                <p>Family Profile: Ages 29, 31, 1 | Generated: Feb 2026</p>
-            </div>
-            <button class="logout-btn" onclick="logout()">Logout</button>
-        </div>
-
-        <div class="header-section">
-            <h1 class="main-title">Customized Cost Report</h1>
-            <p class="subtitle-text">
-                Singlife (SL) vs Prudential (PRU) Integrated Shield Plans Analysis
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>Executive Summary</h2>
-            
-            <div class="summary-point">
-                <h3><strong>Point 1: Cancer Coverage Disparity</strong></h3>
-                <p>Singlife's Prime/Lite riders cap cancer drug services at up to 5x the MediShield Life (MSHL) limit—far below Prudential's 20x MSHL equivalents. This drop in basic cancer drug service cover (requires add-on purchase) reduces rider cost as seen in Table 1. However cancer drug service coverage is essential in Singapore's insurance system: it funds consultations, scans, lab tests, treatment prep/admin fees, supportive drugs, and transfusions tied to cancer therapies. Without it, high out-of-pocket costs persist even with subsidized CDL.</p>
-            </div>
-
-            <div class="summary-point">
-                <h3><strong>Point 2: Pricing Structure Advantage</strong></h3>
-                <p>Prudential's main Integrated Shield Plan (IP) premiums are generally lower or comparable to Singlife's across most adult age bands. In this case, for life assured age 29, and 31, 1, you see the overall medisave is 25% lower than SL, as there is no need for cross-subsidizing "free" child coverage. (Pru main plan are fair priced much lower than SL, as no recovery for free child cover needed for its adult pricing)</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Scenario 1 Analysis (2026)</h2>
-            <p><em>Only Prudential with basic cancer drug cover and SL without optional cancer rider</em></p>
-            <p>In Table 1 below you see 2026 Total family expense of main hospital plan with riders at $856, whereas Prudential, at $1033 due to no free child cover for child age 1 as well as higher rider cost include basic cancer drug services at 20X MSHL limit.</p>
-
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Singlife</th>
-                        <th>Prudential</th>
-                        <th>Pru Savings</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2026 Total Family</td><td>$856</td><td>$1,033</td><td>-</td></tr>
-                    <tr><td>2026 Cash Outlay</td><td>$563</td><td>$811</td><td>-</td></tr>
-                    <tr><td>2026 MediSave</td><td>$293</td><td>$222</td><td>Fair priced (No child subsidy recovery)</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>Scenario 2 Analysis (2026)</h2>
-            <p><em>Both insurers with basic cancer drug service cover</em></p>
-            <p>In Table 2 below, we revisit the same family scenario but add a basic cancer drug service cover to the Singlife (SL) main plan for proper protection. This adjustment shows Prudential's overall family expenses are now lower, thanks to its fair pricing model—clients avoid extra premiums for cancer service coverage (bundled in) and cross-subsidy recovery for SL's "free" child cover baked into adult rates.</p>
-
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Singlife</th>
-                        <th>Prudential</th>
-                        <th>Pru Savings</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2026 Total Family</td><td>$1,226</td><td>$1,033</td><td>16% (Cancer bundled)</td></tr>
-                    <tr><td>2026 Cash Outlay</td><td>$933</td><td>$811</td><td>Lower cash outlay</td></tr>
-                    <tr><td>2026 MediSave</td><td>$293</td><td>$222</td><td>Fair priced (No child subsidy recovery)</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section">
-            <h2>Lifetime Premiums (to Age 100)</h2>
-            <p>Using MOH guidelines, Table 3 illustrates total premiums from current family members' ages to age 100 across both scenarios.</p>
-
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Scenario</th>
-                        <th>Singlife</th>
-                        <th>Prudential</th>
-                        <th>Pru Savings</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Scenario 1</td><td>$633,771</td><td>$563,241</td><td>11%</td></tr>
-                    <tr><td>Scenario 2</td><td>$961,136</td><td>$563,241</td><td>41%</td></tr>
-                </tbody>
-            </table>
-
-            <div class="notes-section">
-                <h3 class="notes-title">Key Insights</h3>
-                <p><strong>In scenario 1,</strong> you can see even without adding on a cancer rider, the lifetime premium of SL family is 11% higher. <strong>If we add back a proper cancer drug service cover, the savings are now at 41% in scenario 2.</strong></p>
-                
-                <div class="actuarial-box">
-                    <h4 style="color: var(--dbs-red); margin-bottom: 16px; font-weight: 600;">Actuarial Pricing Logic</h4>
-                    <p>Insurers calculate premiums using long-term risk pooling and mortality tables, where child policies (ages 1-20) have very low expected claims due to minimal health risks. Offering "free" coverage means waiving or heavily discounting these low premiums, but the insurer still incurs administrative costs, reserves, and minor risks. To maintain profitability and solvency, this shortfall gets recovered by inflating base rates in adult plans aligned to table below provided by MOH website.</p>
-                </div>
-                
-                <div class="actuarial-box">
-                    <h4 style="color: var(--dbs-red); margin-bottom: 16px; font-weight: 600;">Recovery Mechanism</h4>
-                    <p>The "free" child cover isn't truly free—it's cross-subsidized via higher adult contributions over the policy lifecycle, as adults pay premiums for decades while children transition to full-paying status around age 21. Prudential avoids this by charging minimal child rates outright, keeping adult premiums leaner without subsidies. This strategy attracts families to Singlife early but raises overall plan pricing, evident in comparisons where Singlife edges higher post-30s.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const validCredentials = { username: 'user', password: 'pass123' };
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === validCredentials.username && password === validCredentials.password) {
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('reportScreen').style.display = 'block';
-            } else {
-                alert('Invalid credentials. Demo: user / pass123');
-            }
-        });
-
-        function logout() {
-            document.getElementById('reportScreen').style.display = 'none';
-            document.getElementById('loginScreen').style.display = 'block';
-            document.getElementById('loginForm').reset();
-        }
-    </script>
-</body>
-</html>
-
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect w
