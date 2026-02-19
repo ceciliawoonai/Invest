@@ -224,4 +224,322 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect w
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+        .profile-info h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .profile-info p {
+            font-size: 16px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        .section {
+            background: var(--pru-white);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border-left: 8px solid var(--pru-red);
+            position: relative;
+        }
+        .section h2 {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--pru-dark);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .section h2::before {
+            content: "➤";
+            color: var(--pru-red);
+            font-size: 28px;
+            margin-right: 16px;
+        }
+        .summary-point {
+            background: linear-gradient(135deg, #fef7f7 0%, #fdf2f8 100%);
+            border: 2px solid rgba(227,30,36,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .summary-point::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--pru-red);
+        }
+        .summary-point h3 {
+            font-size: 22px;
+            color: var(--pru-red);
+            margin-bottom: 20px;
+            font-weight: 600;
+            padding-left: 20px;
+        }
+
+        /* Professional Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(227,30,36,0.15);
+            margin: 32px 0;
+            background: var(--pru-white);
+        }
+        .data-table thead th {
+            background: linear-gradient(135deg, var(--pru-red) 0%, var(--pru-grey) 100%);
+            color: white;
+            padding: 24px 28px;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .data-table td {
+            padding: 24px 28px;
+            border-bottom: 1px solid #f8fafc;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .data-table tr:hover {
+            background: rgba(227,30,36,0.05);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        .data-table tr:last-child td {
+            border-bottom: none;
+            background: linear-gradient(135deg, #fef7f7 0%, #fdf2f8 100%);
+            font-weight: 600;
+            color: var(--pru-red);
+        }
+
+        /* Notes Section */
+        .notes-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid rgba(227,30,36,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        .notes-title {
+            color: var(--pru-red);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .actuarial-box {
+            background: var(--pru-white);
+            border-left: 6px solid var(--pru-red);
+            padding: 32px;
+            margin: 24px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .actuarial-box h4 {
+            color: var(--pru-red);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .login-card, .section, .header-section { padding: 28px; }
+            .main-title { font-size: 28px; }
+            .data-table td, .data-table th { padding: 18px 16px; font-size: 15px; }
+            .family-photo { width: 110px; height: 110px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <div class="pru-logo">PRU</div>
+            <h1 class="login-title">PRUShield Analysis</h1>
+            <p class="login-subtitle">Personalized Family Report Access</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label class="input-label">Username</label>
+                    <input type="text" class="input-field" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Password</label>
+                    <input type="password" class="input-field" id="password" required>
+                </div>
+                <button type="submit" class="login-btn">View My Report</button>
+            </form>
+            
+            <div class="demo-credentials">
+                Demo: <strong>user</strong> / <strong>pass123</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Screen -->
+    <div id="reportScreen" class="report-wrapper">
+        <div class="profile-card">
+            <div class="profile-info">
+                <h3>Your Family Protection Plan</h3>
+                <p>Personalized Analysis | Ages 29, 31, 1 | Feb 2026</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="header-section">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                 alt="Young Singapore Family" class="family-photo">
+            <h1 class="main-title">PRUShield vs Singlife</h1>
+            <p class="subtitle-text">
+                Integrated Shield Plan Comparison for Your Family
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Key Findings</h2>
+            
+            <div class="summary-point">
+                <h3><strong>Superior Cancer Protection</strong></h3>
+                <p>PRUShield riders provide up to 20x MSHL cancer drug coverage vs Singlife's 5x limit. Essential coverage for consultations, scans, tests, and therapies. Singlife requires costly add-ons for comparable protection.</p>
+            </div>
+
+            <div class="summary-point">
+                <h3><strong>25% Lower MediSave Usage</strong></h3>
+                <p>PRUShield's fair pricing eliminates cross-subsidies for "free" child coverage, preserving your MediSave for retirement. Singlife recovers child discounts through higher adult premiums.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>2026 Annual Comparison</h2>
+            <p><strong>Scenario 1:</strong> PRUShield with cancer coverage vs Singlife without add-on</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Singlife</th>
+                        <th>PRUShield</th>
+                        <th>Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Total Family Cost</td><td>$856</td><td>$1,033</td><td>-</td></tr>
+                    <tr><td>Cash Outlay</td><td>$563</td><td>$811</td><td>-</td></tr>
+                    <tr><td>MediSave Used</td><td>$293</td><td>$222</td><td>24% LESS</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Full Protection Comparison</h2>
+            <p><strong>Scenario 2:</strong> Both plans with cancer drug service coverage</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Singlife</th>
+                        <th>PRUShield</th>
+                        <th>PRU Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Total Family Cost</td><td>$1,226</td><td>$1,033</td><td>16% Savings</td></tr>
+                    <tr><td>Cash Outlay</td><td>$933</td><td>$811</td><td>$122 Less Cash</td></tr>
+                    <tr><td>MediSave Used</td><td>$293</td><td>$222</td><td>24% LESS</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Lifetime Premiums (Age 100)</h2>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Singlife Total</th>
+                        <th>PRUShield Total</th>
+                        <th>PRU Savings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Basic Coverage</td><td>$633,771</td><td>$563,241</td><td>11%</td></tr>
+                    <tr><td>Full Cancer Cover</td><td>$961,136</td><td>$563,241</td><td>41%</td></tr>
+                </tbody>
+            </table>
+
+            <div class="notes-section">
+                <h3 class="notes-title">Why PRUShield Saves You More</h3>
+                
+                <div class="actuarial-box">
+                    <h4>Actuarial Reality</h4>
+                    <p>Child policies (1-20) have minimal claims, yet "free" coverage creates shortfalls recovered through higher adult rates. PRUShield charges fair child premiums, keeping your adult rates lower long-term.</p>
+                </div>
+                
+                <div class="actuarial-box">
+                    <h4>No Hidden Cross-Subsidies</h4>
+                    <p>Singlife's child discounts inflate your premiums for decades. PRUShield's transparent pricing preserves MediSave and delivers bundled cancer protection without add-on costs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const validCredentials = { username: 'user', password: 'pass123' };
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === validCredentials.username && password === validCredentials.password) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('reportScreen').style.display = 'block';
+            } else {
+                alert('Invalid credentials. Demo: user / pass123');
+            }
+        });
+
+        function logout() {
+            document.getElementById('reportScreen').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'block';
+            document.getElementById('loginForm').reset();
+        }
+    </script>
+</body>
+</html>
